@@ -18,7 +18,7 @@ class InputParser():
             return None
         action = InputWrapper(words[0])
         if(len(words) > 0):
-            action.set_args(words[1:])
+            action.set_args(" ".join(words[1:]))            
         return action
 
 class InputHandler():
@@ -35,11 +35,12 @@ class InputHandler():
             else:
                 cmd.command(self._game)
         else:
-            print("Unknown action: ", action.action)
+            print("I dont know how to: ", action.action)
 
     def handle_input(self):     
-        user_input = input(self._game.prompt).lower()       
-        action = self._parser.parse(user_input)        
-        self._invoke(action)
+        user_input = input(self._game.get_prompt()).lower()       
+        action = self._parser.parse(user_input)      
+        if(action) :
+            self._invoke(action)
         
         

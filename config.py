@@ -52,12 +52,33 @@ locations[location_names["living-room"]] = {
 }
 
 locations["test"] = {
-    "reveal-routes": [        
-        "door", "door"
-    ],
-    "reveal-items": [        
-        "table", "chair"
-    ]
+    "description": ["You are in a dark room."],
+    "reveal": {
+        "door 1": {
+            "description" : ["You see a scruffy door."]
+        }, 
+        "door 2": {
+            "description" : ["You see a scruffy door."]
+        }, 
+        "table": {
+            "description" : ["You see a table with some draws."],
+            "inventory": {
+                "draw 1": {
+                    "attributes": ["openable"],
+                    "description": ["You see a wooden draw, with a metal handle."],
+                    "inside": {
+                        "box": {
+                            "attributes": ["takeable"],
+                            "description": ["You see a small wooden box."]
+                        },
+                    }                    
+                }
+            }
+        }, 
+        "chair": {
+            "description" : ["You see an old wooden chair with red leather padding studdied to chair with brass pins."]
+        }, 
+    },    
 }
 
 player = {
