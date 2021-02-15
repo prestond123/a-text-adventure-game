@@ -50,8 +50,19 @@ locations[location_names["living-room"]] = {
         door_names["living-room-door"]
     ]
 }
+
+locations["test"] = {
+    "reveal-routes": [        
+        "door", "door"
+    ],
+    "reveal-items": [        
+        "table", "chair"
+    ]
+}
+
 player = {
-    "location-name": location_names["outside-front-door"]    
+    #"location-name": location_names["outside-front-door"]    
+    "location-name": "test"
 }
 game = {
     "prompt": "What would you like to do? ",

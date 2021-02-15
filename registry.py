@@ -1,9 +1,9 @@
-class Command():
+class RegistryWrapper():
     def __init__(self, command, pass_args=True):        
         self.command = command
         self.pass_args = pass_args
 
-class CommandRegistry():
+class Registry():
     def __init__(self):
         self._registry = {}
     

@@ -4,9 +4,9 @@ from game import *
 from player import *
 from locations import *
 from actions import *
-from command_registry import *
-from commands import *
-from command_handler import *
+from registry import *
+from registry_builder import *
+from input_handler import *
 
 class Game(Actions):
     def __init__(self, config):
@@ -16,17 +16,17 @@ class Game(Actions):
         self._quitting_messages = config["game"]["quitting-messages"]
         self._completed = False
         self._quit = False
-        self._command_registry = CommandRegistry()
-        self._commands = Commands(self._command_registry)
-        self._commands.register_commands()
-        self._command_handler = CommandHandler(self, self._command_registry)
+        self._registry = Registry()
+        RegistryBuilder(self._registry).register_commands()
+        
+        self._input_handler = InputHandler(self, self._registry)
         #self._actions = config["game"]["actions"]
         self.prompt = config["game"]["prompt"]
         self.player = Player(self, config["player"])
         self.locations = Locations(self, config["locations"])                                
 
     def help(self):
-        self._command_registry.help()    
+        self._registry.help()    
 
     def _is_quitting(self):
         return self._quit
@@ -51,8 +51,8 @@ class Game(Actions):
         self._handler_quitting()        
 
     def _next(self):
-        self._command_handler.run()
-        #self._player.add_inventory_items([self._completed_inventory_item])
+        self._input_handler.handle_input()
+        #self._player.add_inventory_items([self._completed_inventory_item]) ## - test completed
         self._handle_state()                        
         self._set_completed() # temp
 
@@ -64,6 +64,4 @@ class Game(Actions):
             self._next()
         
 
-game = Game(config)
-
-game.run()
+Game(config).run()
