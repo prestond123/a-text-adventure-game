@@ -2,6 +2,7 @@ import utils
 from describable import *
 from openable import *
 from takeable import *
+from dropable import *
 
 class Inventory():
     def __init__(self, inventory):
@@ -58,7 +59,7 @@ class Inventory():
     def remove_inventory_item(self, name):        
         self._inventory.pop(name)    
     
-class InventoryItem(Inventory, Takeable, Openable, Describable):
+class InventoryItem(Inventory, Takeable, Dropable, Openable, Describable):
     def __init__(self, inventory, name, config):
         Inventory.__init__(self, Inventory.from_config(config))  
         self.name = name

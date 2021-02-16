@@ -10,9 +10,7 @@ class Takeable:
                 taken = config.pop("taken")
                 for key in taken:
                     config[key] = taken[key]
-                # config["description"] = taken["description"]
-                # if("inventory" in taken):
-                #     config["inventory"] = taken["inventory"]
+                config.pop("taken", None)                
             print("You take the", self.name)
         else:
             print("You cannot take this item.")

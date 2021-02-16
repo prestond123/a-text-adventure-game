@@ -1,3 +1,4 @@
+import utils
 from command_handler import *
 
 class ExamineHandler(CommandHandler):
@@ -17,7 +18,7 @@ class ExamineHandler(CommandHandler):
                 if(item.has_inventory()):
                     game.player.add_inventory_items(item.get_inventory_items())
             else:
-                print("Examine what {}?".format(item_name))
+                utils.print_message("Examine what {}?".format(item_name))
         else:
             location.describe()
             location.reveal()

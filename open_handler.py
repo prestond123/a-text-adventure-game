@@ -1,3 +1,4 @@
+import utils
 from command_handler import *
 
 class OpenHandler(CommandHandler):
@@ -20,6 +21,6 @@ class OpenHandler(CommandHandler):
                 if(item.has_inventory()):
                     actor.add_inventory_items(item.get_inventory_items())            
             else:
-                print("Open what {}?".format(item_name))
+                utils.print_message("Open what {}?".format(item_name))
         else:
-            print("Open what?")
+            utils.print_message("Open what?")

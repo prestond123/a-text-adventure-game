@@ -8,6 +8,6 @@ class Openable:
                 items = self._config.pop("inside", None)
                 self.add_inventory_items(items)                
                 if(len(items) > 0):
-                    utils.print_message("You see something.")
+                    utils.print_message("You see a {} inside the {}".format(sorted(items), self.name))
         else:
             utils.print_message("You cannot open this item.")

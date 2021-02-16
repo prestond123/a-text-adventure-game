@@ -2,6 +2,7 @@ from registry import *
 from examine_handler import *
 from open_handler import *
 from take_handler import *
+from drop_handler import *
 
 class RegistryBuilder():    
     def __init__(self, registry):
@@ -24,5 +25,6 @@ class RegistryBuilder():
         self._registry.register("examine", RegistryWrapper(ExamineHandler().examine, True))
         self._registry.register("open", RegistryWrapper(OpenHandler().open, True))
         self._registry.register("take", RegistryWrapper(TakeHandler().take, True))
+        self._registry.register("drop", RegistryWrapper(DropHandler().drop, True))
         
     

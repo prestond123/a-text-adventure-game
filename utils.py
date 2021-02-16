@@ -9,7 +9,7 @@ def get_dict(name, scope):
     return {}
 
 def print_message(msg):
-    print("  {}".format(msg))
+    print("--> {}".format(msg))
 
 def print_messages(lines):
     for line in lines:

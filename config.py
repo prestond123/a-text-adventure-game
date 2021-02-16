@@ -60,6 +60,22 @@ locations["test"] = {
         "door 2": {
             "description" : ["You see a scruffy door."]
         }, 
+        "tin": {
+            "attributes": ["takeable"],
+            "description": ["You see a small metal."],
+            "taken": {
+                "attributes": ["takeable", "openable"],
+                "description": [
+                    "You examine the tin closly.",
+                    "It has a lable on the bottom with the numbers: 5 5 1 written on it"
+                ],
+                "inside": {
+                    "key 2": {
+                        "description" : ["You see a small metal key"]
+                    }
+                }
+            }
+        },
         "table": {
             "description" : ["You see a table with some draws."],
             "inventory": {
@@ -71,7 +87,7 @@ locations["test"] = {
                             "attributes": ["takeable"],
                             "description": ["You see a small wooden box."],
                             "taken": {
-                                "attributes": ["openable"],
+                                "attributes": ["takeable", "openable"],
                                 "description": [
                                     "You examine the box closly.",
                                     "It has a lable on the bottom with the numbers: 5 5 5 written on it"                                    
