@@ -121,7 +121,7 @@ locations["stairs"] = {
     "reveal": {        
         "door": {
             "attributes": ["openable", "door", "locked"],
-            "unlock": "badge",
+            "unlock": "pin",
             "pick": "pin",
             "description" : ["You see a scruffy door."],
             "inside": {
@@ -217,7 +217,7 @@ player = {
     "inventory": {
         "badge": {
             "description" : ["You are wearing a Minecraft badge"],
-            "inside": {
+            "reveal": {
                 "pin": {
                     "attributes": ["takeable"],
                     "description": ["You see a pin."],

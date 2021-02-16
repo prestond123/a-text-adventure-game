@@ -16,6 +16,7 @@ class ExamineHandler(CommandHandler):
             elif(game.player.has_inventory_item(item_name)):
                 item = game.player.get_inventory_item(item_name)
                 item.describe()
+                item.reveal()
                 if(item.has_inventory()):
                     game.player.add_inventory_items(item.get_inventory_items())
             else:
