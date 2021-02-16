@@ -1,3 +1,5 @@
+import utils
+import colour
 class Takeable:
     def __init__(self):
         pass
@@ -11,6 +13,8 @@ class Takeable:
                 for key in taken:
                     config[key] = taken[key]
                 config.pop("taken", None)                
-            print("You take the", self.name)
+            utils.print_message("You take the '{}'".format(
+                colour.green(self.name)
+            ))
         else:
             print("You cannot take this item.")
