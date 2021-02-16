@@ -1,3 +1,4 @@
+import utils
 class Openable:
     def __init__(self):
         pass
@@ -5,8 +6,8 @@ class Openable:
         if("attributes" in self._config and "openable" in self._config["attributes"]):
             if("inside" in self._config):
                 items = self._config.pop("inside", None)
-                self.add_inventory(items)                
+                self.add_inventory_items(items)                
                 if(len(items) > 0):
-                    print("You see something.")
+                    utils.print_message("You see something.")
         else:
-            print("You cannot open this item.")
+            utils.print_message("You cannot open this item.")

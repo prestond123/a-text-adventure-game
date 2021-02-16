@@ -10,7 +10,12 @@ class ExamineHandler(CommandHandler):
                 item = location.get_inventory_item(item_name)
                 item.describe()
                 if(item.has_inventory()):
-                    location.add_inventory_items(item.get_inventory())
+                    location.add_inventory_items(item.get_inventory_items())
+            elif(game.player.has_inventory_item(item_name)):
+                item = game.player.get_inventory_item(item_name)
+                item.describe()
+                if(item.has_inventory()):
+                    game.player.add_inventory_items(item.get_inventory_items())
             else:
                 print("Examine what {}?".format(item_name))
         else:

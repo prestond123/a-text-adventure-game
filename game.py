@@ -1,6 +1,5 @@
 import utils
 from config import *
-from game import *
 from player import *
 from locations import *
 from actions import *
@@ -21,28 +20,17 @@ class Game():
         
         self.player = Player(self, config["player"])
         self.locations = Locations(self, config["locations"])                                
-        
-    def _is_quitting(self):
-        return self._quit
-
-    def _update_completed(self):
+                          
+    def _handler_completed(self):        
         if(self.player.has_inventory_item(self._config["completed-inventory-item"])):
-            self._set_completed()                
-    def _set_completed(self):
-        self._completed = True                 
-    def _is_completed(self):
-        return self._completed
-
-    def _handler_completed(self):
-        if(self._is_completed()):
+            self.completed = True        
             utils.print_messages(self._config["completed-messages"])
             
     def _handler_quitting(self):
-        if(self._is_quitting()):
+        if(self._quit):
             utils.print_messages(self._config["quitting-messages"])
 
-    def _handle_state(self):
-        self._update_completed()
+    def _handle_state(self):        
         self._handler_completed()
         self._handler_quitting()        
 
@@ -54,19 +42,23 @@ class Game():
 
     def get_config(self):
         return self._config
+
     def help(self):
-        self._registry.help()            
+        self._registry.help()   
+
     def get_prompt(self):
         return self._config["prompt"]
+
     def get_location(self):
         return self.player.get_location()
+        
     def quit(self):
         self._quit = True
-
+        
     def run(self):
-        while(not (self._is_completed() or self._is_quitting())):
-            print("visible:", sorted(self.get_location().get_inventory_items()))
-            print("carrying:", sorted(self.player.get_inventory_items()))
+        while(not (self._completed or self._quit)):
+            print("+ visible:", self.get_location().get_inventory_item_names())
+            print("+ carrying:", self.player.get_inventory_item_names())
             self._next()
     
     def debug(self):
@@ -75,4 +67,5 @@ class Game():
         print("location", self.get_location().get_config())
         print("location inv", self.get_location().get_inventory_items())
 
-Game(config).run()
+game = Game(config)
+game.run()

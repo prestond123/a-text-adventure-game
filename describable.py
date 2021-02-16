@@ -1,3 +1,4 @@
+import utils
 class Describable:
     def __init__(self):
         pass
@@ -5,6 +6,6 @@ class Describable:
         if("description" in self._config):
             desc = self._config["description"]
             for line in desc:
-                print(line)
+                utils.print_message(line)
         else:
-            print("You see nothing special.")
+            utils.print_message("You see nothing special.")

@@ -8,6 +8,10 @@ def get_dict(name, scope):
         return scope[name]
     return {}
 
+def print_message(msg):
+    print("  {}".format(msg))
+
 def print_messages(lines):
     for line in lines:
-        print(line)
+        print_message(line)
+        

@@ -69,7 +69,19 @@ locations["test"] = {
                     "inside": {
                         "box": {
                             "attributes": ["takeable"],
-                            "description": ["You see a small wooden box."]
+                            "description": ["You see a small wooden box."],
+                            "taken": {
+                                "attributes": ["openable"],
+                                "description": [
+                                    "You examine the box closly.",
+                                    "It has a lable on the bottom with the numbers: 5 5 5 written on it"                                    
+                                ],
+                                "inside": {
+                                    "key 1": {
+                                        "description" : ["You see a small metal key"]
+                                    }
+                                }
+                            }
                         },
                     }                    
                 }

@@ -1,3 +1,4 @@
+import utils
 from command_handler import *
 
 class TakeHandler(CommandHandler):
@@ -8,8 +9,8 @@ class TakeHandler(CommandHandler):
         if(item_name):            
             if(location.has_inventory_item(item_name)):
                 item = location.get_inventory_item(item_name)   
-                item.take(game.player)                             
+                item.take(location, game.player)                             
             else:
-                print("Take what {}?".format(item_name))
+                utils.print_message("Take what {}?".format(item_name))
         else:
-            print("Take what?")
+            utils.print_message("Take what?")
