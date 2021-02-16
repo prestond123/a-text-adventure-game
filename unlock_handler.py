@@ -31,6 +31,9 @@ class UnlockHandler(CommandHandler):
                 tool = game.player.get_inventory_item(items[1])                    
                 
                 target.unlock(tool)
+
+                if(target.has_inventory()):
+                    location.add_inventory_items(target.get_inventory_items())      
             else:
                 utils.print_message("Dont understand {} - Unlock <what> with <what>?".format(
                     colour.red(action),                    
