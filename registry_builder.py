@@ -10,7 +10,7 @@ class RegistryBuilder():
         self._registry = registry        
     
     def quit(self, game):
-        print("quiting")
+        print("quiting....")
         game.quit()
 
     def help(self, game):        

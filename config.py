@@ -122,7 +122,7 @@ locations["stairs"] = {
         "door": {
             "attributes": ["openable", "door", "locked"],            
             "unlock": "pin",   
-            "unlock-method" : "pick"
+            "unlock-method" : "pick",
             "description" : ["You see a scruffy door."],
             "inside": {
                 "utility room": {
@@ -213,28 +213,33 @@ locations["office"] = {
 
 player = {
     #"location-name": location_names["outside-front-door"]    
-    "location-name": "basement",
+    "location-name": "stairs",
     "inventory": {
         "badge": {
-            "description" : ["You are wearing a Minecraft badge"],
+            "description" : [
+                "You are wearing a Minecraft badge",
+                "The badge has a pin on the back"
+            ],
             "reveal": {
                 "pin": {
-                    "attributes": ["takeable"],
+                    "attributes": ["takeable", "damageable"],
                     "description": [
                         "You examine the pin closely.",
                         "Hint: It is thin and looks strong enough to pick locks."
                     ],
-                    "damaged" : [
+                    "damaged": {
                         "attributes": ["takeable", "damaged"],
                         "description": [
                             "You examine the pin closely.",
                             "It looks damaged."
                         ],  
-                    ]
+                    }
                 }
             }        
         },
-        "wallet":{
+        "wallet": {
+            "description": ["You see your initials embosed on the wallet."],
+            "attributes": ["takeable", "openable"],
             "inside": {
                 "bank card": {
                     "attributes": ["takeable"],

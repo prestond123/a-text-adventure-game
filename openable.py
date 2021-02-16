@@ -14,7 +14,7 @@ class Openable:
                     if(utils.has_attribute(self._config, "door")):                        
                         if(utils.has_attribute(self._config, "locked")):
                             utils.print_message("Door '{}' is locked.".format(                                
-                                colour.green(self.name)
+                                colour.red(self.name)
                             ))
                         else:
                             #location = self.game.get_location()

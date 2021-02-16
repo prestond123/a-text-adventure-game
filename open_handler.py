@@ -13,7 +13,7 @@ class OpenHandler(CommandHandler):
         return None
 
     def pick(self, game, action):
-        unlock(self, game, action, "pick")
+        self.unlock(game, action, "pick")
 
     def unlock(self, game, action, method="key"):
         # location = game.get_location()

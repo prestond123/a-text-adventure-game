@@ -2,7 +2,6 @@ import utils
 from config import *
 from player import *
 from locations import *
-from actions import *
 from registry import *
 from registry_builder import *
 from input_handler import *
