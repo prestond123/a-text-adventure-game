@@ -26,4 +26,6 @@ def remove_attribute(item, attribute):
        if not attr == attribute:
            attrs.append(attr)
     item["attributes"] = attrs
-    
+
+def add_attribute(item, attribute):    
+    item["attributes"].append(attribute)

@@ -14,14 +14,11 @@ class Game():
         self._completed = False
         self._quit = False
         self._auto_examine = True
-        self._registry = Registry()
-        RegistryBuilder(self._registry).register_commands()
-        
-        self._input_handler = InputHandler(self, self._registry)
-        #self._actions = config["game"]["actions"]
-        
+        self._registry = Registry()                
+        self._input_handler = InputHandler(self, self._registry)                
         self.player = Player(self, config["player"])
-        self.locations = Locations(self, config["locations"])                                
+        self.locations = Locations(self, config["locations"])
+        RegistryBuilder(self._registry).register_commands()
                           
     def _handle_completed(self):        
         if(self.player.has_inventory_item(self._config["completed-inventory-item"])):

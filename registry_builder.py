@@ -20,15 +20,16 @@ class RegistryBuilder():
         game.debug(args)
         
     def register_commands(self):
+        open = OpenHandler()
         self._registry.register("-", RegistryWrapper(self.debug, True))
         self._registry.register("help", RegistryWrapper(self.help, False), "?")
         self._registry.register("quit", RegistryWrapper(self.quit, False))        
         self._registry.register("examine", RegistryWrapper(ExamineHandler().examine, True))
-        self._registry.register("open", RegistryWrapper(OpenHandler().open, True))
+        self._registry.register("open", RegistryWrapper(open.open, True))
+        self._registry.register("unlock", RegistryWrapper(open.unlock, True))
+        self._registry.register("pick", RegistryWrapper(open.pick, True))        
         self._registry.register("take", RegistryWrapper(TakeHandler().take, True))
         self._registry.register("drop", RegistryWrapper(DropHandler().drop, True))
         self._registry.register("go", RegistryWrapper(NavigationHandler().go, True))
-        self._registry.register("unlock", RegistryWrapper(OpenHandler().unlock, True))
-        #self._registry.register("pick", RegistryWrapper(UnlockHandler().pick, True))
         
     

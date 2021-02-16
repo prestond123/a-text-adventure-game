@@ -4,7 +4,7 @@ class Openable:
     def __init__(self):
         pass
     
-    def open(self):               
+    def open(self, context):               
         if(utils.has_attribute(self._config, "openable")):            
             if("inside" in self._config):
                 items = self._config.pop("inside", None)
@@ -17,8 +17,8 @@ class Openable:
                                 colour.green(self.name)
                             ))
                         else:
-                            location = self.game.get_location()
-                            location.remove_inventory_item(self.name)
+                            #location = self.game.get_location()
+                            context.remove_inventory_item(self.name)
                             utils.print_message("You see the '{}' through the '{}'".format(
                                 colour.green(item_name), 
                                 colour.green(self.name)
@@ -28,5 +28,7 @@ class Openable:
                             colour.green(item_name), 
                             colour.green(self.name)
                         ))
+                if(self.has_inventory()):
+                    context.add_inventory_items(self.get_inventory_items())
         else:
             utils.print_message("You cannot open this item.")

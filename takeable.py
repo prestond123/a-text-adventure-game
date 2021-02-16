@@ -13,7 +13,6 @@ class Takeable:
                 taken = config.pop("taken")
                 for key in taken:
                     config[key] = taken[key]
-                config.pop("taken", None)                
             utils.print_message("You take the '{}'".format(
                 colour.green(self.name)
             ))

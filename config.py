@@ -120,9 +120,9 @@ locations["stairs"] = {
     "description": ["You are on the stairs."],    
     "reveal": {        
         "door": {
-            "attributes": ["openable", "door", "locked"],
-            "unlock": "pin",
-            "pick": "pin",
+            "attributes": ["openable", "door", "locked"],            
+            "unlock": "pin",   
+            "unlock-method" : "pick"
             "description" : ["You see a scruffy door."],
             "inside": {
                 "utility room": {
@@ -220,14 +220,17 @@ player = {
             "reveal": {
                 "pin": {
                     "attributes": ["takeable"],
-                    "description": ["You see a pin."],
-                    "taken": {
-                        "attributes": ["takeable"],
+                    "description": [
+                        "You examine the pin closely.",
+                        "Hint: It is thin and looks strong enough to pick locks."
+                    ],
+                    "damaged" : [
+                        "attributes": ["takeable", "damaged"],
                         "description": [
                             "You examine the pin closely.",
-                            "Hint: It is thin and looks strong enough to pick locks."
-                        ]                        
-                    }
+                            "It looks damaged."
+                        ],  
+                    ]
                 }
             }        
         },
