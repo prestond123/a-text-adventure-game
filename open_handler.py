@@ -26,4 +26,4 @@ class OpenHandler(CommandHandler):
                     colour.red(item_name)
                 ))
         else:
-            utils.print_message("Open what?")
+            utils.print_message("Open <what>?")

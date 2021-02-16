@@ -16,4 +16,4 @@ class DropHandler(CommandHandler):
                     colour.red(item_name)
                 ))
         else:
-            utils.print_message("Drop what?")
+            utils.print_message("Drop <what>?")

@@ -15,3 +15,15 @@ def print_messages(lines):
     for line in lines:
         print_message(line)
         
+def has_attribute(item, attribute):
+    if("attributes" in item and attribute in item["attributes"]):
+        return True
+    return False
+
+def remove_attribute(item, attribute):
+    attrs = []
+    for attr in item["attributes"]:
+       if not attr == attribute:
+           attrs.append(attr)
+    item["attributes"] = attrs
+    

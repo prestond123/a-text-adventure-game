@@ -53,7 +53,7 @@ locations["r1"] = {
                             "taken": {
                                 "attributes": ["takeable", "openable"],
                                 "description": [
-                                    "You examine the box closly.",
+                                    "You examine the box closely.",
                                     "It has a lable on the bottom with the numbers: 5 5 5 written on it"                                    
                                 ],
                                 "inside": {
@@ -92,7 +92,7 @@ locations["r2"] = {
             "taken": {
                 "attributes": ["takeable", "openable"],
                 "description": [
-                    "You examine the tub closly, but see noting special"                    
+                    "You examine the tub closely, but see noting special"                    
                 ],
                 "inside": {
                     "key 3": {
@@ -121,6 +121,8 @@ locations["stairs"] = {
     "reveal": {        
         "door": {
             "attributes": ["openable", "door", "locked"],
+            "unlock": "badge",
+            "pick": "pin",
             "description" : ["You see a scruffy door."],
             "inside": {
                 "utility room": {
@@ -188,7 +190,7 @@ locations["office"] = {
                             "taken": {
                                 "attributes": ["takeable", "openable"],
                                 "description": [
-                                    "You examine the box closly.",
+                                    "You examine the box closely.",
                                     "It has a lable on the bottom with the numbers: 5 5 5 written on it"                                    
                                 ],
                                 "inside": {
@@ -211,7 +213,42 @@ locations["office"] = {
 
 player = {
     #"location-name": location_names["outside-front-door"]    
-    "location-name": "basement"
+    "location-name": "basement",
+    "inventory": {
+        "badge": {
+            "description" : ["You are wearing a Minecraft badge"],
+            "inside": {
+                "pin": {
+                    "attributes": ["takeable"],
+                    "description": ["You see a pin."],
+                    "taken": {
+                        "attributes": ["takeable"],
+                        "description": [
+                            "You examine the pin closely.",
+                            "Hint: It is thin and looks strong enough to pick locks."
+                        ]                        
+                    }
+                }
+            }        
+        },
+        "wallet":{
+            "inside": {
+                "bank card": {
+                    "attributes": ["takeable"],
+                    "description": ["You see a bank card."],
+                    "taken": {
+                        "attributes": ["takeable"],
+                        "description": [
+                            "You examine the bank card closely.",
+                            "It is thin, strong and flexable",                            
+                            "It has your name on it",
+                            "Hint: Criminals have been known to open doors with bank cards"
+                        ]                        
+                    }
+                }
+            }        
+        }
+    }
 }
 game = {
     "prompt": "What would you like to do? ",

@@ -26,4 +26,4 @@ class NavigationHandler(CommandHandler):
                     colour.red(location_name)
                 ))
         else:
-            utils.print_message("Go where?")
+            utils.print_message("Go <where>?")
