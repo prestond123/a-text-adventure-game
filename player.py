@@ -2,7 +2,7 @@ from inventory import *
 
 class Player(Inventory):
     def __init__(self, game, config):                
-        Inventory.__init__(self, Inventory.from_config(config))        
+        Inventory.__init__(self, game, Inventory.from_config(config))        
         self._config = config
         self._game = game
     def get_location_name(self):

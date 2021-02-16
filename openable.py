@@ -8,6 +8,11 @@ class Openable:
                 items = self._config.pop("inside", None)
                 self.add_inventory_items(items)                
                 if(len(items) > 0):
-                    utils.print_message("You see a {} inside the {}".format(sorted(items), self.name))
+                    if("attributes" in self._config and "door" in self._config["attributes"]):
+                        location = self.game.get_location()
+                        location.remove_inventory_item(self.name)
+                        utils.print_message("You see the {} through {}".format(sorted(items), self.name))    
+                    else:
+                        utils.print_message("You see a {} inside the {}".format(sorted(items), self.name))                        
         else:
             utils.print_message("You cannot open this item.")

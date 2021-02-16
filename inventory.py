@@ -5,8 +5,10 @@ from takeable import *
 from dropable import *
 
 class Inventory():
-    def __init__(self, inventory):
+    def __init__(self, game, inventory):
         self._inventory = inventory
+        self.game = game
+        
     def from_config(config):
         return utils.get_dict("inventory", config)
     
@@ -19,8 +21,9 @@ class Inventory():
     def get_inventory_items(self):        
         items = {}
         for name in self._inventory:
-            items[name] = InventoryItem(name, self, self._inventory[name])
+            items[name] = InventoryItem(self, name, self._inventory[name])
         return items
+
     def get_inventory_item(self, name):
         return InventoryItem(self, name, self._inventory[name])
         
@@ -61,7 +64,7 @@ class Inventory():
     
 class InventoryItem(Inventory, Takeable, Dropable, Openable, Describable):
     def __init__(self, inventory, name, config):
-        Inventory.__init__(self, Inventory.from_config(config))  
+        Inventory.__init__(self, inventory.game, Inventory.from_config(config))  
         self.name = name
         self._config = config
     def get_config(self):

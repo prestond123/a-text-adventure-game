@@ -5,11 +5,12 @@ from inventory import *
 
 #class Location(Inventory, Actions):
 class Location(Revealable, Describable, Inventory):
-    def __init__(self, name, config):                                
-        Inventory.__init__(self, Inventory.from_config(config))
+    def __init__(self, game, name, config):                                
+        Inventory.__init__(self, game, Inventory.from_config(config))
         #Actions.__init__(self, Actions.from_config(config))
         self.name = name
-        self._config = config
+        self.game = game
+        self._config = config        
 
     def get_config(self):
         return self._config
@@ -18,8 +19,9 @@ class Location(Revealable, Describable, Inventory):
 
 class Locations(dict):
     def __init__(self, game, config):
+        self.game = game
         for location in config:
-            self[location] = Location(location, config[location])
+            self[location] = Location(game, location, config[location])
     def is_valid_location_name(self, location_name):
         return location_name in self
     def get_location(self, location_name):

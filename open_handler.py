@@ -12,11 +12,11 @@ class OpenHandler(CommandHandler):
         return None
 
     def open(self, game, item_name):        
-        location = game.get_location()        
+        location = game.get_location()
         if(item_name):   
             actor = self._get_actor(item_name, [location, game.player])
             if(actor):
-                item = actor.get_inventory_item(item_name)                
+                item = actor.get_inventory_item(item_name)                                
                 item.open()
                 if(item.has_inventory()):
                     actor.add_inventory_items(item.get_inventory_items())            

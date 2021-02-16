@@ -51,15 +51,31 @@ locations[location_names["living-room"]] = {
     ]
 }
 
-locations["test"] = {
+
+
+locations["r1"] = {
     "description": ["You are in a dark room."],
-    "reveal": {
+    "reveal": { 
         "door 1": {
-            "description" : ["You see a scruffy door."]
+            "attributes": ["openable", "door"],
+            "description" : ["You see a scruffy door."],
+            "inside": {
+                "r2": {
+                    "attributes": ["room"],
+                    "description" : ["You see a room: r2"]
+                }
+            }
         }, 
         "door 2": {
-            "description" : ["You see a scruffy door."]
-        }, 
+            "attributes": ["openable", "door"],
+            "description" : ["You see a scruffy door."],
+            "inside": {
+                "r2": {
+                    "attributes": ["room"],
+                    "description" : ["You see a room: r2"]
+                }
+            }
+        },        
         "tin": {
             "attributes": ["takeable"],
             "description": ["You see a small metal."],
@@ -105,13 +121,46 @@ locations["test"] = {
         }, 
         "chair": {
             "description" : ["You see an old wooden chair with red leather padding studdied to chair with brass pins."]
-        }, 
-    },    
+        }
+    }
 }
+
+
+locations["r2"] = {
+    "description": ["You are in a light room."],
+    "reveal": {
+        "door 1": {
+            "attributes": ["openable", "door"],
+            "description" : ["You see a door."],
+            "inside": {
+                "r3": {
+                    "attributes": ["room"],
+                    "description" : ["You see a room: r3"]
+                }
+            }
+        }, 
+        "tub": {
+            "attributes": ["takeable"],
+            "description": ["You see a platic tub."],
+            "taken": {
+                "attributes": ["takeable", "openable"],
+                "description": [
+                    "You examine the tub closly, but see noting special"                    
+                ],
+                "inside": {
+                    "key 3": {
+                        "description" : ["You see a small metal key"]
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 player = {
     #"location-name": location_names["outside-front-door"]    
-    "location-name": "test"
+    "location-name": "r1"
 }
 game = {
     "prompt": "What would you like to do? ",
