@@ -1,3 +1,5 @@
+import utils
+import colour
 class InputWrapper():
     def __init__(self, action):
         self.action = action        
@@ -35,7 +37,9 @@ class InputHandler():
             else:
                 cmd.command(self._game)
         else:
-            print("I dont know how to: ", action.action)
+            utils.print_message("I dont know how to '{}'".format(
+                colour.red(action.action)
+            ))
 
     def handle_input(self):     
         user_input = input(self._game.get_prompt()).lower()       

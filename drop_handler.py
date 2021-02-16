@@ -1,4 +1,5 @@
 import utils
+import colour
 from command_handler import *
 
 class DropHandler(CommandHandler):
@@ -11,6 +12,8 @@ class DropHandler(CommandHandler):
                 item = game.player.get_inventory_item(item_name)   
                 item.drop(game.player, location)
             else:
-                utils.print_message("Drop what {}?".format(item_name))
+                utils.print_message("Drop what {}?".format(
+                    colour.red(item_name)
+                ))
         else:
             utils.print_message("Drop what?")

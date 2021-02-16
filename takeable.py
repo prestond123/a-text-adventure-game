@@ -3,6 +3,7 @@ import colour
 class Takeable:
     def __init__(self):
         pass
+    
     def take(self, location, player):
         if("attributes" in self._config and "takeable" in self._config["attributes"]):       
             config = self.get_config()            
@@ -17,4 +18,6 @@ class Takeable:
                 colour.green(self.name)
             ))
         else:
-            print("You cannot take this item.")
+            utils.print_message("You cannot take '{}'.".format(
+                colour.red(self.name)
+            ))

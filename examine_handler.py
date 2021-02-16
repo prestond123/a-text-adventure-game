@@ -1,4 +1,5 @@
 import utils
+import colour
 from command_handler import *
 
 class ExamineHandler(CommandHandler):
@@ -18,7 +19,9 @@ class ExamineHandler(CommandHandler):
                 if(item.has_inventory()):
                     game.player.add_inventory_items(item.get_inventory_items())
             else:
-                utils.print_message("Examine what {}?".format(item_name))
+                utils.print_message("Examine what '{}'?".format(
+                    colour.red(item_name)
+                ))
         else:
             location.describe()
             location.reveal()

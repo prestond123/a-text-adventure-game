@@ -82,11 +82,12 @@ locations["r1"] = {
             "taken": {
                 "attributes": ["takeable", "openable"],
                 "description": [
-                    "You examine the tin closly.",
+                    "You examine the tin closely.",
                     "It has a lable on the bottom with the numbers: 5 5 1 written on it"
                 ],
                 "inside": {
                     "key 2": {
+                        "attributes": ["takeable"],
                         "description" : ["You see a small metal key"]
                     }
                 }
@@ -110,6 +111,7 @@ locations["r1"] = {
                                 ],
                                 "inside": {
                                     "key 1": {
+                                        "attributes": ["takeable"],
                                         "description" : ["You see a small metal key"]
                                     }
                                 }

@@ -14,16 +14,16 @@ class Location(Revealable, Describable, Inventory):
 
     def get_config(self):
         return self._config
-    def get_description(self):
-        return self._config
-
+    
 class Locations(dict):
     def __init__(self, game, config):
         self.game = game
         for location in config:
             self[location] = Location(game, location, config[location])
+
     def is_valid_location_name(self, location_name):
         return location_name in self
+        
     def get_location(self, location_name):
         if(self.is_valid_location_name(location_name)):
             return self[location_name]

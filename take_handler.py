@@ -1,4 +1,5 @@
 import utils
+import colour
 from command_handler import *
 
 class TakeHandler(CommandHandler):
@@ -12,7 +13,7 @@ class TakeHandler(CommandHandler):
                 item.take(location, game.player)                             
             else:
                 utils.print_message("Take what '{}'?".format(
-                    colour.green(item_name)
+                    colour.red(item_name)
                 ))
         else:
             utils.print_message("Take what?")
