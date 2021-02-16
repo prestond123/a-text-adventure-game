@@ -13,6 +13,7 @@ class Game():
         self._config = config["game"]        
         self._completed = False
         self._quit = False
+        self._auto_examine = True
         self._registry = Registry()
         RegistryBuilder(self._registry).register_commands()
         
@@ -31,14 +32,6 @@ class Game():
         if(self._quit):
             utils.print_messages(self._config["quitting-messages"])
       
-    def _next(self):
-        self._input_handler.handle_input()
-        #self._player.add_inventory_items([self._config["completed-inventory-item"]]) ## - test completed
-        self._handle_completed()
-        self._handle_quitting()        
-
-        #self._set_completed() # temp
-
     def get_config(self):
         return self._config
 
@@ -53,14 +46,28 @@ class Game():
         
     def quit(self):
         self._quit = True
-        
+    
+    def auto_examine(self):
+        if(self._auto_examine):
+            cmd = self._registry.get_command("examine")            
+            cmd.command(self, None)
+
     def run(self):
+        self.auto_examine()
         while(not (self._completed or self._quit)):
             print("+ visible:", self.get_location().get_inventory_item_names())
             print("+ carrying:", self.player.get_inventory_item_names())
-            self._next()
+            self._input_handler.handle_input()
+            #self._player.add_inventory_items([self._config["completed-inventory-item"]]) ## - test completed
+            self._handle_completed()
+            self._handle_quitting()                    
+            #self._set_completed() # temp
     
     def debug(self, what):
+        if(what == "auto examine on"):
+            self._auto_examine = True
+        if(what == "auto examine off"):
+            self._auto_examine = False
         if(what == "game"):
             print("game", self.get_config())        
         if(what == "player"):

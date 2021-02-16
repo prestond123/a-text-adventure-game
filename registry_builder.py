@@ -27,6 +27,6 @@ class RegistryBuilder():
         self._registry.register("open", RegistryWrapper(OpenHandler().open, True))
         self._registry.register("take", RegistryWrapper(TakeHandler().take, True))
         self._registry.register("drop", RegistryWrapper(DropHandler().drop, True))
-        self._registry.register("go", RegistryWrapper(NavigationHandler().go, True))
+        self._registry.register("go", RegistryWrapper(NavigationHandler().go, True))        
         
     

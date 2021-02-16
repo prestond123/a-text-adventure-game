@@ -13,7 +13,7 @@ class Openable:
                     if("attributes" in self._config and "door" in self._config["attributes"]):
                         location = self.game.get_location()
                         location.remove_inventory_item(self.name)
-                        utils.print_message("You see the '{}' through '{}'".format(
+                        utils.print_message("You see the '{}' through the '{}'".format(
                             colour.green(item_name), 
                             colour.green(self.name)
                         ))
