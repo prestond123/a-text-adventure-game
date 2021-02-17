@@ -18,7 +18,7 @@ class Inventory():
     def has_inventory(self):
         return len(self._inventory) > 0
 
-    def has_inventory_item(self, name):        
+    def has_inventory_item(self, name):                
         return name in self._inventory
     
     def get_inventory_items(self):        

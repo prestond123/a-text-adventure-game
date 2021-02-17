@@ -8,8 +8,8 @@ class NavigationHandler(CommandHandler):
 
     def go(self, game, location_name):
         location = game.get_location()
-        if(location_name):              
-            if(location.has_inventory_item(location_name)):
+        if(location_name):                          
+            if(not location.has_inventory_item(location_name)):
                 utils.print_message("I dont know how to get to '{}' - Try: go <place>".format(
                     colour.red(location_name)
                 ))
