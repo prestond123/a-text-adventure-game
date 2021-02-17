@@ -66,27 +66,29 @@ class Game():
                             count -= 1                
         return count
 
-    def get_visible(self):
-        visible = []
-        items = self.get_location().get_inventory_items()
+    def get_inventory_display(self, items):
+        visible = []        
         for item_name in items:
             item = items[item_name]            
             config = item.get_config()
             if(utils.has_attribute(config, "room")):
                 visible.append("'{}'".format(colour.yellow(item_name)))
+            elif(utils.has_attribute(config, "openable")):
+                visible.append("'{}'".format(colour.cyan(item_name)))
             else:
-                visible.append(item_name)
-        return " ".join(visible)
-        #return self.get_location().get_inventory_item_names()
+                visible.append("'{}'".format(colour.green(item_name)))
+                #visible.append("'{}'".format(item_name))
+        return ", ".join(visible)        
 
     def run(self):
         self.auto_examine()
         while(not (self._completed or self._quit)):
-            carrying = self.player.get_inventory_items()            
-            visible = self.get_visible()
+            carrying = self.player.get_inventory_items()
+            carrying_display = self.get_inventory_display(carrying)
+            visible = self.get_inventory_display(self.get_location().get_inventory_items())
             print("+ visible:[{}]".format(visible))
-            print("+ carrying: {}({}/{})".format(
-                sorted(carrying), 
+            print("+ carrying: [{}]({}/{})".format(
+                carrying_display, 
                 self.count_item_slots(carrying),
                 game._config["max-carry"])
             )
