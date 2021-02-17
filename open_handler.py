@@ -12,6 +12,27 @@ class OpenHandler(CommandHandler):
                 return context
         return None
 
+    def safe(self, game, combination):
+        location = game.get_location()
+
+        config = location.find_item_by_attribute("safe")
+        item_names = sorted(config)
+        if(len(item_names) > 1):
+            utils.print_message("Config error: more than one safe in location")
+            return
+        if(len(item_names) < 1):
+            utils.print_message("There doesn't appear to be a safe in the room.")
+            return                    
+        if(not combination):        
+            utils.print_message("You cant open a safe without combination - Try: safe <nnnnnn>")
+            return                    
+        if(not config[item_names[0]]["combination"] == combination):
+            utils.print_message("You entered the wrong combination")
+            return
+        utils.add_attribute(config[item_names[0]], "openable")
+        safe = location.get_inventory_item(item_names[0])
+        safe.open(location)
+        
     def pick(self, game, action):
         self.unlock(game, action, "pick")
 

@@ -106,10 +106,27 @@ locations["r2"] = {
 
 ## game config
 #locations = { }
+combination1 = "567798"
 locations["basement"] = {    
     "attributes": ["room"],
     "description": ["You are in a dark room, all you can see is a glimmer of light comming down from some stairs."],
-    "reveal": {         
+    "reveal": {   
+        "safe": {
+            "attributes": ["safe"],
+            "description" : [
+                "You see a safe - the safe has a label that reads:",
+                "To open the safe use:",
+                "safe <nnnnnn>"
+            ],
+            "combination": combination1,
+            "inside": {
+                "back door key": {
+                    "attributes": ["takeable"],
+                    "description" : ["You see a large iron key."]
+                }
+            }
+            
+        },      
         "stairs": {
             "attributes": ["room"],
             "description" : ["You see a stairs"]
@@ -122,7 +139,7 @@ locations["basement"] = {
                 "description": ["You are in a dimly lit basement."],
                 "reveal": {
                     "notice board": {                        
-                        "description" : ["The notice board has the numbers 567798 on it"]
+                        "description" : ["The notice board has the numbers " + combination1 + " on it"]
                     }
                 }
             }
