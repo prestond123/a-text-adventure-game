@@ -213,7 +213,7 @@ locations["office"] = {
 
 player = {
     #"location-name": location_names["outside-front-door"]    
-    "location-name": "stairs",
+    "location-name": "basement",
     "inventory": {
         "badge": {
             "description" : [
@@ -243,16 +243,12 @@ player = {
             "inside": {
                 "bank card": {
                     "attributes": ["takeable"],
-                    "description": ["You see a bank card."],
-                    "taken": {
-                        "attributes": ["takeable"],
-                        "description": [
-                            "You examine the bank card closely.",
-                            "It is thin, strong and flexable",                            
-                            "It has your name on it",
-                            "Hint: Criminals have been known to open doors with bank cards"
-                        ]                        
-                    }
+                    "description": [
+                        "You examine the bank card closely.",
+                        "It is thin, strong and flexable",                            
+                        "It has your name on it",
+                        "Hint: Criminals have been known to open doors with bank cards"
+                    ],
                 }
             }        
         }

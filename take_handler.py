@@ -12,8 +12,8 @@ class TakeHandler(CommandHandler):
                 item = location.get_inventory_item(item_name)   
                 item.take(location, game.player)                             
             else:
-                utils.print_message("Take what '{}'?".format(
+                utils.print_message("I cant see a '{}' - Try: take <item>".format(
                     colour.red(item_name)
                 ))
         else:
-            utils.print_message("Take what?")
+            utils.print_message("I dont understand - Try: take item")

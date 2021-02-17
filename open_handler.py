@@ -23,24 +23,24 @@ class OpenHandler(CommandHandler):
                 location = game.get_location()  
                 context = self._get_context(items[0], [location, game.player])                
                 if(not context):                    
-                    utils.print_message("Dont what target '{}' is".format(
+                    utils.print_message("I cannot see a '{}'".format(
                         colour.red(items[0])
                     ))
                     return
                 target = context.get_inventory_item(items[0])                    
                 if(not game.player.has_inventory_item(items[1])):
-                    utils.print_message("Dont what tool {}".format(
+                    utils.print_message("You dont have a {}".format(
                         colour.red(items[1])
                     ))                
                     return
                 tool = game.player.get_inventory_item(items[1])                                    
                 target.unlock(location, tool, method)                
             else:
-                utils.print_message("Dont understand {} - Unlock <what> with <what>?".format(
+                utils.print_message("I dont understand: '{}' - Try unlock <item> with <item>.".format(
                     colour.red(action),                    
                 ))
         else:
-            utils.print_message("Unlock <what> with <what>?")
+            utils.print_message("I dont understand - Try: unlock <item> with <item>?")
 
     def open(self, game, item_name):        
         location = game.get_location()
@@ -50,8 +50,8 @@ class OpenHandler(CommandHandler):
                 item = context.get_inventory_item(item_name)                                
                 item.open(context)                
             else:
-                utils.print_message("Open what '{}'?".format(
+                utils.print_message("I cant see a '{}' - Try open <item>".format(
                     colour.red(item_name)
                 ))
         else:
-            utils.print_message("Open <what>?")
+            utils.print_message("I dont understand - Try: open <item> ")

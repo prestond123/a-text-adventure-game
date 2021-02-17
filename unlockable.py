@@ -28,7 +28,7 @@ class Unlockable:
                             colour.red(tool.name), 
                         ))    
                         return
-                    utils.remove_attribute(self._config, "locked")                    
+                utils.remove_attribute(self._config, "locked")                    
                 self.open(context)
             else:
                 utils.print_message("You cannot unlock '{}' with a '{}'.".format(                    
