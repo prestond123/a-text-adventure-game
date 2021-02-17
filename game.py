@@ -12,6 +12,7 @@ class Game():
     def __init__(self, config):
         self._root_config = config
         self._config = config["game"]        
+        self.max_carry = config["game"]["max-carry"]
         self._completed = False
         self._quit = False
         self._auto_examine = True
@@ -50,7 +51,7 @@ class Game():
             cmd = self._registry.get_command("examine")            
             cmd.command(self, None)
 
-    def count_item_slots(self, items):
+    def set_carrying_count(self, items):
         #print("game", self._root_config)
         count = 0
         item_names = sorted(items)
@@ -64,6 +65,7 @@ class Game():
                     for i in inside:                        
                         if(i in item_names):                            
                             count -= 1                
+        self.carrying_count = count
         return count
 
     def get_inventory_display(self, items):
@@ -73,6 +75,8 @@ class Game():
             config = item.get_config()
             if(utils.has_attribute(config, "room")):
                 visible.append("'{}'".format(colour.yellow(item_name)))
+            elif(utils.has_attribute(config, "door") and utils.has_attribute(config, "locked")):                
+                visible.append("'{}'".format(colour.red(item_name)))
             elif(utils.has_attribute(config, "openable")):
                 visible.append("'{}'".format(colour.cyan(item_name)))
             else:
@@ -89,8 +93,8 @@ class Game():
             print("+ visible:[{}]".format(visible))
             print("+ carrying: [{}]({}/{})".format(
                 carrying_display, 
-                self.count_item_slots(carrying),
-                game._config["max-carry"])
+                self.set_carrying_count(carrying),
+                self.max_carry)
             )
             self._input_handler.handle_input()
             #self._player.add_inventory_items([self._config["completed-inventory-item"]]) ## - test completed

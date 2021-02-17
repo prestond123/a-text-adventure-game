@@ -9,6 +9,11 @@ class TakeHandler(CommandHandler):
         location = game.get_location()        
         if(item_name):            
             if(location.has_inventory_item(item_name)):
+                if(game.carrying_count >= game.max_carry):
+                    utils.print_message("{}".format(
+                        colour.red("You cannot carry any more items - Try: drop <item>")
+                    )) 
+                    return
                 item = location.get_inventory_item(item_name)   
                 item.take(location, game.player)                             
             else:

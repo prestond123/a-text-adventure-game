@@ -217,6 +217,36 @@ player = {
     #"location-name": location_names["outside-front-door"]    
     "location-name": "basement",
     "inventory": {
+        "t1": {
+            "attributes": ["takeable"],
+            "description" : [""
+            ]
+        },
+        "t2": {
+            "attributes": ["takeable"],
+            "description" : [""
+            ]
+        },
+        "t3": {
+            "attributes": ["takeable"],
+            "description" : [""
+            ]
+        },
+        "t4": {
+            "attributes": ["takeable"],
+            "description" : [""
+            ]
+        },
+        "t5": {
+            "attributes": ["takeable"],
+            "description" : [""
+            ]
+        },
+        "t6": {
+            "attributes": ["takeable"],
+            "description" : [""
+            ]
+        },
         "badge": {
             "attributes": ["takeable"],
             "description" : [
