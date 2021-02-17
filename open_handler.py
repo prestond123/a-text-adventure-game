@@ -53,5 +53,14 @@ class OpenHandler(CommandHandler):
                 utils.print_message("I cant see a '{}' - Try open <item>".format(
                     colour.red(item_name)
                 ))
-        else:
-            utils.print_message("I dont understand - Try: open <item> ")
+        else:            
+            items = location.find_item_by_attribute("openable")
+            item_names = sorted(items)
+            if(len(item_names) > 1):
+                utils.print_message("I dont understand what to open - Try: open <item>")
+                return
+            if(len(item_names) < 1):
+                utils.print_message("There doesn't appear to be anything to open in the room.")
+                return            
+            items[item_name].open(location)
+            

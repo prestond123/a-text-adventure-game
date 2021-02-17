@@ -156,7 +156,7 @@ locations["utility room"] = {
     ],
     "reveal": {
         "basement light switch": {
-            "attributes": ["flickable"],
+            "attributes": ["switchable"],
             "description" : ["You see a light switch next to the basement door."],
             "event": ["basement", "light", "on"]
         },

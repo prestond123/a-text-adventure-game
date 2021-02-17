@@ -6,16 +6,24 @@ class SwitchHandler(CommandHandler):
     def __init__(self):
         pass
     
-    def flick(self, game, item_name):
+    def switch(self, game, item_name):
         location = game.get_location()
         if(item_name):             
             if(location.has_inventory_item(item_name)):
                 item = location.get_inventory_item(item_name)                                
-                item.flick()
+                item.switch()
             else:
-                utils.print_message("I cant see a '{}' - Try flick <switch>".format(
+                utils.print_message("I cant see a '{}' - Try switch <switch>".format(
                     colour.red(item_name)
                 ))
         else:            
-            utils.print_message("I dont understand - Try: flick <switch>")
+            items = location.find_item_by_attribute("switchable")
+            item_names = sorted(items)
+            if(len(item_names) > 1):
+                utils.print_message("I dont understand which switch - Try: switch <switch>")
+                return
+            if(len(item_names) < 1):
+                utils.print_message("There doesn't appear to be a switch in the room.")
+                return            
+            items[item_name].switch()
     

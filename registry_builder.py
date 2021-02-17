@@ -32,6 +32,6 @@ class RegistryBuilder():
         self._registry.register("take", RegistryWrapper(TakeHandler().take, True))
         self._registry.register("drop", RegistryWrapper(DropHandler().drop, True))
         self._registry.register("go", RegistryWrapper(NavigationHandler().go, True))
-        self._registry.register("flick", RegistryWrapper(SwitchHandler().flick, True))
+        self._registry.register("switch", RegistryWrapper(SwitchHandler().switch, True))
         
     

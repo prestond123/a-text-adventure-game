@@ -1,10 +1,10 @@
 import utils
 import colour
-class Flickable:
+class Switchable:
     def __init__(self):
         pass
     
-    def flick(self):               
+    def switch(self):               
         if(utils.has_attribute(self._config, "flickable")):                        
             if("event" not in self._config):
                  utils.print_message("Config Error: switch '{}' has no event in config.".format(

@@ -12,8 +12,8 @@ class Location(Events, Revealable, Describable, Inventory):
         self._config = config        
 
     def get_config(self):
-        return self._config 
-    
+        return self._config     
+
 class Locations(dict):
     def __init__(self, game, config):
         self.game = game

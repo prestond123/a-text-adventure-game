@@ -6,7 +6,7 @@ from dropable import *
 from unlockable import *
 from revealable import *
 from damageable import *
-from flickable import *
+from switchable import *
 
 class Inventory():
     def __init__(self, game, inventory):
@@ -66,9 +66,18 @@ class Inventory():
     def remove_inventory_item(self, name):        
         self._inventory.pop(name)    
     
+    def find_item_by_attribute(self, attribute):
+        items_with_attr = {}
+        for item_name in self._inventory:
+            item = self._inventory[item_name]
+            if(utils.has_attribute(item, attribute)):
+                items_with_attr[item_name] = item
+        return items_with_attr
+
+
 class InventoryItem(
     Inventory, Damageable, Revealable, Takeable, Dropable, 
-    Openable, Describable, Unlockable, Flickable):
+    Openable, Describable, Unlockable, Switchable):
     def __init__(self, inventory, name, config):
         Inventory.__init__(self, inventory.game, Inventory.from_config(config))  
         self.name = name
