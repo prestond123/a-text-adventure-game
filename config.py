@@ -177,9 +177,46 @@ locations["utility room"] = {
             "description" : ["You see a light switch next to the basement door."],
             "event": ["basement", "light", "on"]
         },
+        "sink": {            
+            "description" : ["You see an old ceramic sink, with some taps."],
+            "inventory":
+            {
+                "hot tap": {            
+                    "description" : ["You see the letter C on teh tap."],
+                },
+                "cold tap": {            
+                    "description" : ["You see the letter C on teh tap"],
+                },
+                "soap": {            
+                    "attributes": ["takeable"],
+                    "description" : ["You see a bar of soap"],
+                },
+            }
+        },
+        "tea towel": {            
+            "description" : ["You see an dirty tea towel."]
+        },
+        "cupboard": {    
+            "attributes": ["container", "openable"],        
+            "description" : ["You see a cupboard mounted on the wall."],
+            "inside": {
+                "key hook rack": {
+                    "attributes": ["container"],
+                    "description": ["You see a key hook rack."],
+                    "inventory": {
+                        "office key": {
+                            "attributes": ["takeable"],
+                            "description": ["You see a key."]
+                        }
+                    }
+                }
+            }
+        },
         "door 1": {
-            "attributes": ["openable", "door"],
-            "description" : ["You see a door."],
+            "attributes": ["openable", "door", "locked"],
+            "description" : ["You see a door."],            
+            "unlock": "office key",
+            "unlock-method" : "key",
             "inside": {
                 "office": {
                     "attributes": ["room"],
@@ -207,7 +244,7 @@ locations["office"] = {
             "description" : ["You see a table with some draws."],
             "inventory": {
                 "draw 1": {
-                    "attributes": ["continer", "openable"],
+                    "attributes": ["container", "openable"],
                     "description": ["You see a wooden draw, with a metal handle."],
                     "inside": {
                         "battery": {
@@ -217,11 +254,11 @@ locations["office"] = {
                     }
                 },
                 "draw 2": {
-                    "attributes": ["continer", "openable"],
+                    "attributes": ["container", "openable"],
                     "description": ["You see a wooden draw, with a metal handle."],
                     "inside": {
                         "box": {
-                            "attributes": ["continer", "takeable"],
+                            "attributes": ["container", "takeable"],
                             "description": ["You see a small wooden box."],
                             "taken": {
                                 "attributes": ["takeable", "openable"],
