@@ -4,7 +4,8 @@ from open_handler import *
 from take_handler import *
 from drop_handler import *
 from navigation_handler import *
-# from unlock_handler import *
+from switch_handler import *
+
 class RegistryBuilder():    
     def __init__(self, registry):
         self._registry = registry        
@@ -31,5 +32,6 @@ class RegistryBuilder():
         self._registry.register("take", RegistryWrapper(TakeHandler().take, True))
         self._registry.register("drop", RegistryWrapper(DropHandler().drop, True))
         self._registry.register("go", RegistryWrapper(NavigationHandler().go, True))
+        self._registry.register("flick", RegistryWrapper(SwitchHandler().flick, True))
         
     

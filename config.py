@@ -106,13 +106,26 @@ locations["r2"] = {
 
 ## game config
 #locations = { }
-locations["basement"] = {
+locations["basement"] = {    
     "attributes": ["room"],
     "description": ["You are in a dark room, all you can see is a glimmer of light comming down from some stairs."],
-    "reveal": { 
+    "reveal": {         
         "stairs": {
             "attributes": ["room"],
             "description" : ["You see a stairs"]
+        }
+    },
+    "light": "off",
+    "on": {
+        "light": {
+            "on": {
+                "description": ["You are in a dimly lit basement."],
+                "reveal": {
+                    "notice board": {                        
+                        "description" : ["The notice board has the numbers 567798 on it"]
+                    }
+                }
+            }
         }
     }
 }
@@ -122,7 +135,7 @@ locations["stairs"] = {
     "reveal": {        
         "door": {
             "attributes": ["openable", "door", "locked"],            
-            "unlock": "pin",   
+            "unlock": "badge",   
             "unlock-method" : "pick",
             "description" : ["You see a scruffy door."],
             "inside": {
@@ -141,7 +154,12 @@ locations["utility room"] = {
         "You see a washing machine, and some other white goods",
         "There are a few doors gong off this room"
     ],
-    "reveal": {         
+    "reveal": {
+        "basement light switch": {
+            "attributes": ["flickable"],
+            "description" : ["You see a light switch next to the basement door."],
+            "event": ["basement", "light", "on"]
+        },
         "door 1": {
             "attributes": ["openable", "door"],
             "description" : ["You see a door."],
@@ -161,8 +179,7 @@ locations["utility room"] = {
                     "description" : ["It looks like a hall"]
                 }
             }
-        }     
-
+        }
     }
 }
 
@@ -216,59 +233,22 @@ locations["office"] = {
 player = {
     #"location-name": location_names["outside-front-door"]    
     "location-name": "basement",
-    "inventory": {
-        "t1": {
-            "attributes": ["takeable"],
-            "description" : [""
-            ]
-        },
-        "t2": {
-            "attributes": ["takeable"],
-            "description" : [""
-            ]
-        },
-        "t3": {
-            "attributes": ["takeable"],
-            "description" : [""
-            ]
-        },
-        "t4": {
-            "attributes": ["takeable"],
-            "description" : [""
-            ]
-        },
-        "t5": {
-            "attributes": ["takeable"],
-            "description" : [""
-            ]
-        },
-        "t6": {
-            "attributes": ["takeable"],
-            "description" : [""
-            ]
-        },
+    "inventory": {        
         "badge": {
-            "attributes": ["takeable"],
+            "attributes": ["takeable", "damageable"],
             "description" : [
                 "You are wearing a Minecraft badge",
-                "The badge has a pin on the back"
+                "The badge has a pin on the back",
+                "You examine the pin closely.",
+                "Hint: It looks strong enough to pick locks."
             ],
-            "reveal": {
-                "pin": {
-                    "attributes": ["takeable", "damageable"],
-                    "description": [
-                        "You examine the pin closely.",
-                        "Hint: It is thin and looks strong enough to pick locks."
-                    ],
-                    "damaged": {
-                        "attributes": ["takeable", "damaged"],
-                        "description": [
-                            "You examine the pin closely.",
-                            "It looks damaged."
-                        ],  
-                    }
-                }
-            }        
+            "damaged": {
+                "attributes": ["takeable", "damaged"],
+                "description": [
+                    "You examine the badge closely.",
+                    "The pin now looks damaged."
+                ],  
+            }            
         },
         "wallet": {
             "description": ["You see your initials embosed on the wallet."],

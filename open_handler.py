@@ -40,7 +40,7 @@ class OpenHandler(CommandHandler):
                     colour.red(action),                    
                 ))
         else:
-            utils.print_message("I dont understand - Try: unlock <item> with <item>?")
+            utils.print_message("I dont understand - Try: unlock <item> with <item>")
 
     def open(self, game, item_name):        
         location = game.get_location()

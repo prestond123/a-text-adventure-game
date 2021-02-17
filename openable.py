@@ -17,6 +17,7 @@ class Openable:
                             utils.print_message("Door '{}' is locked.".format(                                
                                 colour.red(self.name)
                             ))
+                            return
                         else:
                             #location = self.game.get_location()
                             context.remove_inventory_item(self.name)

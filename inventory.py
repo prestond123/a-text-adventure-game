@@ -6,6 +6,7 @@ from dropable import *
 from unlockable import *
 from revealable import *
 from damageable import *
+from flickable import *
 
 class Inventory():
     def __init__(self, game, inventory):
@@ -65,7 +66,9 @@ class Inventory():
     def remove_inventory_item(self, name):        
         self._inventory.pop(name)    
     
-class InventoryItem(Inventory, Damageable, Revealable, Takeable, Dropable, Openable, Describable, Unlockable):
+class InventoryItem(
+    Inventory, Damageable, Revealable, Takeable, Dropable, 
+    Openable, Describable, Unlockable, Flickable):
     def __init__(self, inventory, name, config):
         Inventory.__init__(self, inventory.game, Inventory.from_config(config))  
         self.name = name
