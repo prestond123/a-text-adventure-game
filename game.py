@@ -1,4 +1,5 @@
 import utils
+import colour
 from config import *
 from player import *
 from locations import *
@@ -8,7 +9,8 @@ from input_handler import *
 import json
 
 class Game():
-    def __init__(self, config):        
+    def __init__(self, config):
+        self._root_config = config
         self._config = config["game"]        
         self._completed = False
         self._quit = False
@@ -48,11 +50,46 @@ class Game():
             cmd = self._registry.get_command("examine")            
             cmd.command(self, None)
 
+    def count_item_slots(self, items):
+        #print("game", self._root_config)
+        count = 0
+        item_names = sorted(items)
+        for item_name in items:                   
+            item = items[item_name]            
+            config = item.get_config()
+            count += 1
+            for container in ["revealed"]:
+                if(container in config):                    
+                    inside = sorted(config[container])                    
+                    for i in inside:                        
+                        if(i in item_names):                            
+                            count -= 1                
+        return count
+
+    def get_visible(self):
+        visible = []
+        items = self.get_location().get_inventory_items()
+        for item_name in items:
+            item = items[item_name]            
+            config = item.get_config()
+            if(utils.has_attribute(config, "room")):
+                visible.append("'{}'".format(colour.yellow(item_name)))
+            else:
+                visible.append(item_name)
+        return " ".join(visible)
+        #return self.get_location().get_inventory_item_names()
+
     def run(self):
         self.auto_examine()
         while(not (self._completed or self._quit)):
-            print("+ visible:", self.get_location().get_inventory_item_names())
-            print("+ carrying:", self.player.get_inventory_item_names())
+            carrying = self.player.get_inventory_items()            
+            visible = self.get_visible()
+            print("+ visible:[{}]".format(visible))
+            print("+ carrying: {}({}/{})".format(
+                sorted(carrying), 
+                self.count_item_slots(carrying),
+                game._config["max-carry"])
+            )
             self._input_handler.handle_input()
             #self._player.add_inventory_items([self._config["completed-inventory-item"]]) ## - test completed
             self._handle_completed()

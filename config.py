@@ -107,6 +107,7 @@ locations["r2"] = {
 ## game config
 #locations = { }
 locations["basement"] = {
+    "attributes": ["room"],
     "description": ["You are in a dark room, all you can see is a glimmer of light comming down from some stairs."],
     "reveal": { 
         "stairs": {
@@ -135,6 +136,7 @@ locations["stairs"] = {
 }
 
 locations["utility room"] = {
+    "attributes": ["room"],
     "description": [
         "You see a washing machine, and some other white goods",
         "There are a few doors gong off this room"
@@ -171,7 +173,7 @@ locations["office"] = {
             "description" : ["You see a table with some draws."],
             "inventory": {
                 "draw 1": {
-                    "attributes": ["openable"],
+                    "attributes": ["continer", "openable"],
                     "description": ["You see a wooden draw, with a metal handle."],
                     "inside": {
                         "battery": {
@@ -181,11 +183,11 @@ locations["office"] = {
                     }
                 },
                 "draw 2": {
-                    "attributes": ["openable"],
+                    "attributes": ["continer", "openable"],
                     "description": ["You see a wooden draw, with a metal handle."],
                     "inside": {
                         "box": {
-                            "attributes": ["takeable"],
+                            "attributes": ["continer", "takeable"],
                             "description": ["You see a small wooden box."],
                             "taken": {
                                 "attributes": ["takeable", "openable"],
@@ -205,7 +207,7 @@ locations["office"] = {
                 }
             }
         }, 
-        "chair": {
+        "chair": {            
             "description" : ["You see an old wooden chair with red leather padding studdied to chair with brass pins."]
         }
     }
@@ -216,6 +218,7 @@ player = {
     "location-name": "basement",
     "inventory": {
         "badge": {
+            "attributes": ["takeable"],
             "description" : [
                 "You are wearing a Minecraft badge",
                 "The badge has a pin on the back"
@@ -256,10 +259,11 @@ player = {
 }
 game = {
     "prompt": "What would you like to do? ",
-    "completed-inventory-item": "talisman",    ## todo
+    "completed-inventory-item": "talisman",     ## todo
+    "completed-location": "exit",               ## todo
     "completed-messages": ["Well done!", "You completed the game."],
     "quitting-messages": ["You quit the game.", "Come back soon!"],
-    "actions": ["quit", "help"]
+    "max-carry": 8
 }
 config = {
     "game": game,
