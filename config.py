@@ -21,14 +21,17 @@ locations["basement"] = {
                 "reveal": {                    
                     "tub": {
                         "attributes": ["takeable"],
-                        "description": ["You see a platic tub."],
+                        "description": [
+                            "You see a platic tub."                            
+                        ],
                         "taken": {
                             "attributes": ["takeable", "openable"],
                             "description": [
                                 "You examine the tub closely, but see noting special"                    
                             ],
                             "inside": {
-                                "key 3": {
+                                "office key": {
+                                    "attributes": ["takeable"],
                                     "description" : ["You see a small metal key"]
                                 }
                             },
@@ -37,7 +40,9 @@ locations["basement"] = {
                     },
                     "oil tin": {
                         "attributes": ["takeable"],
-                        "description": ["You see a small metal oil tin."],
+                        "description": [
+                            "You see a small metal oil tin."
+                        ],
                         "taken": {
                             "attributes": ["takeable", "openable"],
                             "description": [
@@ -105,14 +110,23 @@ locations["stairs"] = {
 locations["utility room"] = {
     "attributes": ["room"],
     "description": [
-        "You see a washing machine, and some other white goods",
+        "You seem to be in a room used for washing stuff, ",
+        "there are some white goods, and a sink, and towel",
         "There are a few doors gong off this room"
     ],
     "reveal": {
         "basement light switch": {
             "attributes": ["switchable"],
             "description" : ["You see a light switch next to the basement door."],
+            "switched": ["The switch makes a click sound"],
             "event": ["basement", "light", "on"]
+        },
+        "washing machine": {            
+            "description" : ["You see an old wasing machine."],
+        },
+        "box of soap powder": {            
+            "attributes": ["takeable"],
+            "description" : ["You an open box of soap powder."],
         },
         "sink": {            
             "description" : ["You see an old ceramic sink, with some taps."],
@@ -142,7 +156,7 @@ locations["utility room"] = {
                     "attributes": ["container"],
                     "description": ["You see a key hook rack."],
                     "inventory": {
-                        "office key": {
+                        "car key": {
                             "attributes": ["takeable"],
                             "description": ["You see a key."]
                         }
@@ -203,12 +217,14 @@ locations["office"] = {
                 }
             }      
         },     
-        "table": {
-            "description" : ["You see a table with some draws."],
+        "desk": {
+            "description" : ["You see some draws on the desk."],
             "inventory": {
                 "draw 1": {
-                    "attributes": ["container", "openable"],
+                    "attributes": ["container", "openable", "locked"],
                     "description": ["You see a wooden draw, with a metal handle."],
+                    "unlock": "draw key",
+                    "unlock-method" : "key",
                     "inside": {
                         "battery": {
                             "attributes": ["takeable"],
@@ -231,7 +247,7 @@ locations["office"] = {
                                     "It has a lable on the bottom with the numbers: 5 5 5 written on it"                                    
                                 ],
                                 "inside": {
-                                    "key 1": {
+                                    "draw key": {
                                         "attributes": ["takeable"],
                                         "description" : ["You see a small metal key"]
                                     }
@@ -249,9 +265,9 @@ locations["office"] = {
     }
 }
 
-player = {
-    #"location-name": location_names["outside-front-door"]    
+player = {    
     "location-name": "basement",
+    #"location-name": "utility room",
     "inventory": {        
         "badge": {
             "attributes": ["takeable", "damageable"],

@@ -1,3 +1,5 @@
+import colour
+
 def get_list(name, scope):
     if(name in scope):
         return scope[name]
@@ -37,3 +39,24 @@ def build_index(container):
         index[key[0]] = index[key[0]] = container[key]
     return index
 
+def get_inventory_display(items):
+        visible = []        
+        for item_name in items:
+            item = items[item_name]    
+            config = item
+            if(not type(item) == dict):
+                config = item.get_config()
+            if(has_attribute(config, "room")):
+                visible.append("'{}'".format(colour.yellow(item_name)))
+            elif(has_attribute(config, "locked")):                
+                visible.append("'{}'".format(colour.red(item_name)))            
+            elif(has_attribute(config, "switchable")):
+                visible.append("'{}'".format(colour.cyan(item_name)))
+            elif(has_attribute(config, "takeable")):
+                visible.append("'{}'".format(colour.cyan(item_name)))
+            elif(has_attribute(config, "openable")):
+                visible.append("'{}'".format(colour.cyan(item_name)))
+            else:
+                visible.append("'{}'".format(colour.green(item_name)))
+                #visible.append("'{}'".format(item_name))
+        return ", ".join(visible)   

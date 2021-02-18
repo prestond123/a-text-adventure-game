@@ -25,5 +25,6 @@ class SwitchHandler(CommandHandler):
             if(len(item_names) < 1):
                 utils.print_message("There doesn't appear to be a switch in the room.")
                 return            
-            items[item_name].switch()
+            item = location.get_inventory_item(item_names[0])  
+            item.switch()
     

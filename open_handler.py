@@ -40,6 +40,8 @@ class OpenHandler(CommandHandler):
         # location = game.get_location()
         if(action):           
             items = action.split(" with ")
+            if(not (type(items)==list and len(items) == 2)):
+                items = action.split(" w ") # alias
             if(type(items)==list and len(items) == 2):                
                 location = game.get_location()  
                 context = self._get_context(items[0], [location, game.player])                
@@ -48,17 +50,23 @@ class OpenHandler(CommandHandler):
                         colour.red(items[0])
                     ))
                     return
+                ##TODO we could index target and use alias
                 target = context.get_inventory_item(items[0])                    
                 if(not game.player.has_inventory_item(items[1])):
                     utils.print_message("You dont have a {}".format(
                         colour.red(items[1])
                     ))                
                     return
+                ##TODO we could index tools and use alias
                 tool = game.player.get_inventory_item(items[1])                                    
                 target.unlock(location, tool, method)                
             else:
-                utils.print_message("I dont understand: '{}' - Try unlock <item> with <item>.".format(
+                method_display = method
+                if(method=="key"):
+                    method_display="unlock"
+                utils.print_message("I dont understand: '{}' - Try {} <item> with <item>.".format(
                     colour.red(action),                    
+                    colour.red(method_display),
                 ))
         else:
             utils.print_message("I dont understand - Try: unlock <item> with <item>")
