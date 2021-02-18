@@ -133,6 +133,7 @@ class Game():
             print("location-config", location.get_config())
             for i in location.get_inventory_items():
                 print(" ", i)
-                
+
 game = Game(config)
 game.run()
+

@@ -4,6 +4,8 @@ locations={}
 ## game config
 #locations = { }
 combination1 = "567798"
+combination2 = "778999"
+
 locations["basement"] = {    
     "attributes": ["room"],
     "description": ["You are in a dark room, all you can see is a glimmer of light comming down from some stairs."],
@@ -18,7 +20,42 @@ locations["basement"] = {
         "light": {
             "on": {
                 "description": ["You are in a dimly lit basement."],
-                "reveal": {                    
+                "reveal": {     
+                    "cupboard": {    
+                        "attributes": ["container", "openable"],        
+                        "description" : ["You see a cupboard mounted on the wall."],
+                        "inside": {
+                            "key hook rack": {
+                                "attributes": ["container"],
+                                "description": ["You see a key hook rack."],
+                                "inventory": {
+                                    "draw 4 key": {
+                                        "attributes": ["takeable"],
+                                        "description": ["You see a key with a number 4 on it."]
+                                    }
+                                }
+                            }
+                        },
+                        "opened": ["The cupboard clicks open."]
+                    },
+                    "safe": {
+                        "attributes": ["safe"],
+                        "description" : [
+                            "You see a safe - the safe has a label that reads:",
+                            "To open the safe use:",
+                            "safe <nnnnnn>"
+                        ],
+                        "combination": combination2,
+                        "inside": {
+                            "paper": {
+                                "attributes": ["takeable"],
+                                "description" : [
+                                    "A piece of paper ripped down the right hand side.",
+                                    "The paper has the number: "+ combination1[:3]
+                                ]                                    
+                            }
+                        }      
+                    },               
                     "tub": {
                         "attributes": ["takeable"],
                         "description": [
@@ -47,12 +84,12 @@ locations["basement"] = {
                             "attributes": ["takeable", "openable"],
                             "description": [
                                 "You examine the tin closely.",
-                                "It has a lable on the bottom with the numbers: 5 5 1 written on it"
+                                "It has a lable on the bottom with the numbers: 999 written on it"
                             ],
                             "inside": {
                                 "shirt button": {
                                     "attributes": ["takeable"],
-                                    "description" : ["You see a small shitt button"]
+                                    "description" : ["You see a small shirt button"]
                                 }
                             },
                             "opened": [" The lid opens with a pop noise."]
@@ -80,7 +117,8 @@ locations["basement"] = {
                         }
                     },
                     "notice board": {                        
-                        "description" : ["The notice board has the numbers " + combination1 + " on it"]
+                        "description" : [
+                            "The notice board has the numbers: 999912 written really small on it"]
                     }
                 }
             }
@@ -90,10 +128,37 @@ locations["basement"] = {
 
 locations["stairs"] = {
     "description": ["You are on the stairs."],    
-    "reveal": {        
+    "reveal": {    
+        "picture": {
+            "attributes": ["container", "moveable"],
+            "description" : ["You see a painted picture of a landscape."],
+            "moved": ["You move the picture to the side"],
+            "inside": {
+                "nail": {                    
+                    "attributes": ["container", "takeable", "damageable"],
+                    "description" : [
+                        "You see a rusty nail in the wall",
+                        "The nail looks like it can be pulled out",                        
+                    ],
+                    "taken": {                        
+                        "description": [
+                            "You examine the nail closely.",
+                            "It looks quite strong."
+                        ],
+                    },
+                    "damaged": {
+                        "attributes": ["takeable", "damaged"],
+                        "description": [
+                            "You examine the nail closely.",
+                            "The nail now looks damaged."
+                        ]
+                    }                        
+                }
+            }      
+        },         
         "door": {
             "attributes": ["openable", "door", "locked"],            
-            "unlock": "badge",   
+            "unlock": "nail",   
             "unlock-method" : "pick",
             "description" : ["You see a scruffy door."],
             "inside": {
@@ -121,11 +186,22 @@ locations["utility room"] = {
             "switched": ["The switch makes a click sound"],
             "event": ["basement", "light", "on"]
         },
-        "washing machine": {            
-            "description" : ["You see an old wasing machine."],
+        "washing machine": {      
+            "attributes": ["container", "openable"],      
+            "description" : [
+                "You see an old wasing machine.",
+                "The washing machine has a serial number: 665123"
+            ],
+            "inside": {                
+                "draw 2 key": {
+                    "attributes": ["takeable"],
+                    "description": ["You see a key with a number 2 on it."],                    
+                }
+            },
+            "opened": ["The door clicks open."]            
         },
         "box of soap powder": {            
-            "attributes": ["takeable"],
+            "attributes": ["takeable"],            
             "description" : [
                 "You see a open box of soap powder.",
                 "You smell it and it smells floral."
@@ -137,10 +213,10 @@ locations["utility room"] = {
             "inventory":
             {
                 "hot tap": {            
-                    "description" : ["You see the letter C on teh tap."],
+                    "description" : ["You see the letter H on the tap."],
                 },
                 "cold tap": {            
-                    "description" : ["You see the letter C on teh tap"],
+                    "description" : ["You see the letter C on the tap"],
                 },
                 "soap": {            
                     "attributes": ["takeable"],
@@ -162,7 +238,7 @@ locations["utility room"] = {
                     "inventory": {
                         "car key": {
                             "attributes": ["takeable"],
-                            "description": ["You see a key."]
+                            "description": ["You see a key with BMW printed on it."]
                         }
                     }
                 }
@@ -201,7 +277,7 @@ locations["utility room"] = {
             "description" : [
                 "You see a heavy door", 
                 "The door has a small window",
-                "Looking throught the window, it looks like the leads outside."],            
+                "Looking through the window, it looks like the leads outside."],            
             "unlock": "backdoor key",
             "unlock-method" : "key",
             "inside": {
@@ -211,7 +287,7 @@ locations["utility room"] = {
                 }
             },
             "opened": ["The door squeaks open."]
-        } 
+        }
     }
 }
 
@@ -246,7 +322,7 @@ locations["office"] = {
                 "draw 1": {
                     "attributes": ["container", "openable", "locked"],
                     "description": ["You see a wooden draw, with a metal handle."],
-                    "unlock": "draw key",
+                    "unlock": "draw 1 key",
                     "unlock-method" : "key",
                     "inside": {
                         "battery": {
@@ -257,6 +333,22 @@ locations["office"] = {
                     "opened" : ["You hear the the sound of friction."]
                 },
                 "draw 2": {
+                    "attributes": ["container", "openable", "locked"],
+                    "description": ["You see a wooden draw, with a metal handle."],
+                    "unlock": "draw 2 key",
+                    "unlock-method" : "key",
+                    "inside": {
+                        "paper": {
+                            "attributes": ["takeable"],
+                            "description" : [
+                                "A piece of paper ripped down the left hand side.",
+                                "The paper has the number: "+ combination1[3:]
+                            ]                                
+                        }
+                    },
+                    "opened" : ["You hear the the sound of friction."]
+                },
+                "draw 3": {
                     "attributes": ["container", "openable"],
                     "description": ["You see a wooden draw, with a metal handle."],
                     "inside": {
@@ -267,19 +359,35 @@ locations["office"] = {
                                 "attributes": ["takeable", "openable"],
                                 "description": [
                                     "You examine the box closely.",
-                                    "It has a lable on the bottom with the numbers: 5 5 5 written on it"                                    
+                                    "It has a lable on the bottom with the numbers: 788 written on it"                                    
                                 ],
                                 "inside": {
-                                    "draw key": {
+                                    "draw 1 key": {
                                         "attributes": ["takeable"],
-                                        "description" : ["You see a small metal key"]
+                                        "description" : ["You see a small metal key with the number 1 on it."]
                                     }
                                 }
                             }
                         },
                     },
                     "opened" : ["You hear a squeak as it opens."]              
-                }
+                },
+                "draw 4": {
+                    "attributes": ["container", "openable", "locked"],
+                    "description": ["You see a wooden draw, with a metal handle."],
+                    "unlock": "draw 4 key",
+                    "unlock-method" : "key",
+                    "inside": {
+                        "paper": {
+                            "attributes": ["takeable"],
+                            "description" : [
+                                "A piece of paper ripped down the left hand side.",
+                                "The paper has the number: "+ combination2
+                            ]                                
+                        }
+                    },
+                    "opened" : ["You hear the the sound of friction."]
+                },
             }
         }, 
         "chair": {            
@@ -301,7 +409,7 @@ player = {
                 "You are wearing a Minecraft badge",
                 "The badge has a pin on the back",
                 "You examine the pin closely.",
-                "Hint: It looks strong enough to pick locks."
+                "Hint: It looks like the pin is too weak to pick locks."
             ],
             "damaged": {
                 "attributes": ["takeable", "damaged"],

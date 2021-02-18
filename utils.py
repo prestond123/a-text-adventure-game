@@ -34,7 +34,8 @@ def add_attribute(item, attribute):
 
 def build_index(container):
     index = {}
-    for key in sorted(container):        
+    for key in sorted(container):    
+        #if(not "name" in container[key]):
         container[key]["name"] = key
         index[key[0]] = index[key[0]] = container[key]
     return index
