@@ -334,7 +334,7 @@ game = {
     "completed-location": "exit",
     "completed-messages": ["Well done!", "You completed the game."],
     "quitting-messages": ["You quit the game.", "Come back soon!"],
-    "max-carry": 8
+    "max-carry": 5
 }
 config = {
     "game": game,
