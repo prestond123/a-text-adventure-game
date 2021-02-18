@@ -97,6 +97,31 @@ class Game():
         if(what == "auto examine off"):
             self._auto_examine = False
 
+        if(what == "save"):
+            save = json.dumps(self._root_config)
+            with open('save.json', 'w') as f:
+                json.dump(save, f)
+
+            # p = json.dumps(self.player.__dict__)
+            # with open('save-p.json', 'w') as f:
+            #     json.dump(p, f)
+
+            # l = json.dumps(self.locations)
+            # with open('save-l.json', 'w') as f:
+            #     json.dump(l, f)
+
+        # import json, codecs
+        #     with open('data.txt', 'wb') as f:
+        #         json.dump(data, codecs.getwriter('utf-8')(f), ensure_ascii=False)
+        
+        if(what == "load"):
+            with open('save.json') as f:
+                data = json.load(f) 
+                config = json.loads(data)
+                self._root_config = config                
+                self.player = Player(self, config["player"])
+                self.locations = Locations(self, config["locations"])     
+
         if(what == "game"):
             print("game", self.get_config())        
         if(what == "player"):

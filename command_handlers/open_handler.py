@@ -105,5 +105,5 @@ class OpenHandler(CommandHandler):
             if(len(item_names) < 1):
                 utils.print_message("There doesn't appear to be anything to open in the room.")
                 return            
-            items[item_name].open(location)
+            items[item_name].open(item_names[0])
             
