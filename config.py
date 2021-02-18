@@ -110,23 +110,7 @@ combination1 = "567798"
 locations["basement"] = {    
     "attributes": ["room"],
     "description": ["You are in a dark room, all you can see is a glimmer of light comming down from some stairs."],
-    "reveal": {   
-        "safe": {
-            "attributes": ["safe"],
-            "description" : [
-                "You see a safe - the safe has a label that reads:",
-                "To open the safe use:",
-                "safe <nnnnnn>"
-            ],
-            "combination": combination1,
-            "inside": {
-                "back door key": {
-                    "attributes": ["takeable"],
-                    "description" : ["You see a large iron key."]
-                }
-            }
-            
-        },      
+    "reveal": {                            
         "stairs": {
             "attributes": ["room"],
             "description" : ["You see a stairs"]
@@ -138,6 +122,27 @@ locations["basement"] = {
             "on": {
                 "description": ["You are in a dimly lit basement."],
                 "reveal": {
+                    "tool rack": {                        
+                        "description" : ["You see a a tool rack on the wall."],
+                        "inventory": {
+                            "spanner": {      
+                                "attributes": ["takeable"],      
+                                "description" : ["You see an dirty spanner."]
+                            },
+                            "hammer": {      
+                                "attributes": ["takeable"],      
+                                "description" : ["You see a hammer."]
+                            },
+                            "small screw driver": {      
+                                "attributes": ["takeable"],      
+                                "description" : ["You see a small screw driver."]
+                            },
+                            "large screw driver": {      
+                                "attributes": ["takeable"],      
+                                "description" : ["You see a large screw driver."]
+                            }
+                        }
+                    },
                     "notice board": {                        
                         "description" : ["The notice board has the numbers " + combination1 + " on it"]
                     }
@@ -193,7 +198,8 @@ locations["utility room"] = {
                 },
             }
         },
-        "tea towel": {            
+        "tea towel": {      
+            "attributes": ["takeable"],      
             "description" : ["You see an dirty tea towel."]
         },
         "cupboard": {    
@@ -240,6 +246,27 @@ locations["utility room"] = {
 locations["office"] = {
     "description": ["You are in an office."],
     "reveal": {
+        "picture": {
+            "attributes": ["container", "moveable"],
+            "description" : ["You see a painted picture of a man with a dog."],
+            "inventory": {
+                "safe": {
+                    "attributes": ["safe"],
+                    "description" : [
+                        "You see a safe - the safe has a label that reads:",
+                        "To open the safe use:",
+                        "safe <nnnnnn>"
+                    ],
+                    "combination": combination1,
+                    "inside": {
+                        "back door key": {
+                            "attributes": ["takeable"],
+                            "description" : ["You see a large iron key."]
+                        }
+                    }      
+                }
+            }      
+        },     
         "table": {
             "description" : ["You see a table with some draws."],
             "inventory": {

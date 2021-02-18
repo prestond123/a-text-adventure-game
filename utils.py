@@ -29,3 +29,11 @@ def remove_attribute(item, attribute):
 
 def add_attribute(item, attribute):    
     item["attributes"].append(attribute)
+
+def build_index(container):
+    index = {}
+    for key in sorted(container):        
+        container[key]["name"] = key
+        index[key[0]] = index[key[0]] = container[key]
+    return index
+

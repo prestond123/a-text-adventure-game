@@ -29,17 +29,28 @@ class NavigationHandler(CommandHandler):
 
     def go(self, game, location_name):
         location = game.get_location()
-        if(location_name):                          
+        locations = utils.build_index(location.find_item_by_attribute("room"))
+        location_names = sorted(locations)
+        if(location_name):          
+            if(len(location_name) == 1 and location_name in location_names):
+                # using the alias - so look up name
+                loc = locations[location_name]
+                location_name = loc["name"]
             self._go(game, location_name, location)
         else:
-            locations = location.find_item_by_attribute("room")
-            location_names = sorted(locations)
-            if(len(location_names) > 1):
+            # try auto routing - if room has single exit                        
+            if(len(location_names) > 2): # locations are indexed, so will have alias in it too.
                 utils.print_message("I dont understand where to go - Try: go <place>")
                 return
             if(len(location_names) < 1):
                 utils.print_message("There doesn't appear to be anywhere I can go to at the moment.")
                 return     
 
-            self._go(game, location_names[0], location)
+            location_name = location_names[0]
+            if(len(location_name) == 1 and location_name in location_names):
+                # using the alias - so look up name
+                loc = locations[location_name]
+                location_name = loc["name"]
+                
+            self._go(game, location_name, location)
             

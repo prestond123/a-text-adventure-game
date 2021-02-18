@@ -96,6 +96,7 @@ class Game():
                 self.set_carrying_count(carrying),
                 self.max_carry)
             )
+            print("+ location:['{}']".format(colour.yellow(self.player.get_location_name())))
             self._input_handler.handle_input()
             #self._player.add_inventory_items([self._config["completed-inventory-item"]]) ## - test completed
             self._handle_completed()

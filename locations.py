@@ -9,7 +9,7 @@ class Location(Events, Revealable, Describable, Inventory):
         #Actions.__init__(self, Actions.from_config(config))
         self.name = name
         self.game = game
-        self._config = config        
+        self._config = config            
 
     def get_config(self):
         return self._config     
@@ -17,8 +17,9 @@ class Location(Events, Revealable, Describable, Inventory):
 class Locations(dict):
     def __init__(self, game, config):
         self.game = game
-        for location in config:
-            self[location] = Location(game, location, config[location])
+        for location_name in config:            
+            #config[location_name]["name"] = location_name
+            self[location_name] = Location(game, location_name, config[location_name])
 
     def is_valid_location_name(self, location_name):
         return location_name in self

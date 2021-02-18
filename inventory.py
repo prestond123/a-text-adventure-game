@@ -9,9 +9,13 @@ from damageable import *
 from switchable import *
 
 class Inventory():
-    def __init__(self, game, inventory):
-        self._inventory = inventory
+    def __init__(self, game, inventory):        
         self.game = game
+        # for item_name in inventory:
+        #     item = inventory[item_name]
+        #     if("name" not in item):
+        #         item["name"] = item_name
+        self._inventory = inventory
         
     def from_config(config):
         return utils.get_dict("inventory", config)
