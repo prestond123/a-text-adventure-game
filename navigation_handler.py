@@ -39,10 +39,14 @@ class NavigationHandler(CommandHandler):
             self._go(game, location_name, location)
         else:
             # try auto routing - if room has single exit                        
-            if(len(location_names) > 2): # locations are indexed, so will have alias in it too.
-                utils.print_message("I dont understand where to go - Try: go <place>")
-                return
+
+            # commented out - always go to first location in list of routes - as per UI
+            # if(len(location_names) > 2): # locations are indexed, so will have alias in it too.
+            #     utils.print_message("I dont understand where to go - Try: go <place>")
+            #     return
+
             if(len(location_names) < 1):
+                # the solution must be in this room
                 utils.print_message("There doesn't appear to be anywhere I can go to at the moment.")
                 return     
 

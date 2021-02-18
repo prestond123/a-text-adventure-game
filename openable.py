@@ -18,14 +18,16 @@ class Openable:
                                 colour.red(self.name)
                             ))
                             return
-                        else:
-                            #location = self.game.get_location()
-                            context.remove_inventory_item(self.name)
-                            utils.print_message("You see the '{}' through the '{}'".format(
-                                colour.green(item_name), 
-                                colour.green(self.name)
-                            ))
+                        if("opened" in self._config):
+                            utils.print_messages(self._config["opened"])
+                        context.remove_inventory_item(self.name)
+                        utils.print_message("You see the '{}' through the '{}'".format(
+                            colour.green(item_name), 
+                            colour.green(self.name)
+                        ))
                     else:
+                        if("opened" in self._config):
+                            utils.print_messages(self._config["opened"])
                         utils.print_message("You see a '{}' inside the '{}'".format(
                             colour.green(item_name), 
                             colour.green(self.name)

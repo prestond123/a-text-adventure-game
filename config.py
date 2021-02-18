@@ -1,108 +1,5 @@
-### test rooms
+
 locations={}
-locations["r1"] = {
-    "description": ["You are in a dark room."],
-    "reveal": { 
-        "door 1": {
-            "attributes": ["openable", "door"],
-            "description" : ["You see a scruffy door."],
-            "inside": {
-                "r2": {
-                    "attributes": ["room"],
-                    "description" : ["You see a room: r2"]
-                }
-            }
-        }, 
-        "door 2": {
-            "attributes": ["openable", "door"],
-            "description" : ["You see a scruffy door."],
-            "inside": {
-                "r2": {
-                    "attributes": ["room"],
-                    "description" : ["You see a room: r2"]
-                }
-            }
-        },        
-        "tin": {
-            "attributes": ["takeable"],
-            "description": ["You see a small metal."],
-            "taken": {
-                "attributes": ["takeable", "openable"],
-                "description": [
-                    "You examine the tin closely.",
-                    "It has a lable on the bottom with the numbers: 5 5 1 written on it"
-                ],
-                "inside": {
-                    "key 2": {
-                        "attributes": ["takeable"],
-                        "description" : ["You see a small metal key"]
-                    }
-                }
-            }
-        },
-        "table": {
-            "description" : ["You see a table with some draws."],
-            "inventory": {
-                "draw 1": {
-                    "attributes": ["openable"],
-                    "description": ["You see a wooden draw, with a metal handle."],
-                    "inside": {
-                        "box": {
-                            "attributes": ["takeable"],
-                            "description": ["You see a small wooden box."],
-                            "taken": {
-                                "attributes": ["takeable", "openable"],
-                                "description": [
-                                    "You examine the box closely.",
-                                    "It has a lable on the bottom with the numbers: 5 5 5 written on it"                                    
-                                ],
-                                "inside": {
-                                    "key 1": {
-                                        "attributes": ["takeable"],
-                                        "description" : ["You see a small metal key"]
-                                    }
-                                }
-                            }
-                        },
-                    }                    
-                }
-            }
-        }, 
-        "chair": {
-            "description" : ["You see an old wooden chair with red leather padding studdied to chair with brass pins."]
-        }
-    }
-}
-locations["r2"] = {
-    "description": ["You are in a light room."],
-    "reveal": {
-        "door 1": {
-            "attributes": ["openable", "door"],
-            "description" : ["You see a door."],
-            "inside": {
-                "r3": {
-                    "attributes": ["room"],
-                    "description" : ["You see a room: r3"]
-                }
-            }
-        }, 
-        "tub": {
-            "attributes": ["takeable"],
-            "description": ["You see a platic tub."],
-            "taken": {
-                "attributes": ["takeable", "openable"],
-                "description": [
-                    "You examine the tub closely, but see noting special"                    
-                ],
-                "inside": {
-                    "key 3": {
-                        "description" : ["You see a small metal key"]
-                    }
-                }
-            }
-        }
-    }
-}
 
 ## game config
 #locations = { }
@@ -121,7 +18,41 @@ locations["basement"] = {
         "light": {
             "on": {
                 "description": ["You are in a dimly lit basement."],
-                "reveal": {
+                "reveal": {                    
+                    "tub": {
+                        "attributes": ["takeable"],
+                        "description": ["You see a platic tub."],
+                        "taken": {
+                            "attributes": ["takeable", "openable"],
+                            "description": [
+                                "You examine the tub closely, but see noting special"                    
+                            ],
+                            "inside": {
+                                "key 3": {
+                                    "description" : ["You see a small metal key"]
+                                }
+                            },
+                            "opened": ["The tub make a popping noise as you open it."]
+                        }
+                    },
+                    "oil tin": {
+                        "attributes": ["takeable"],
+                        "description": ["You see a small metal oil tin."],
+                        "taken": {
+                            "attributes": ["takeable", "openable"],
+                            "description": [
+                                "You examine the tin closely.",
+                                "It has a lable on the bottom with the numbers: 5 5 1 written on it"
+                            ],
+                            "inside": {
+                                "shirt button": {
+                                    "attributes": ["takeable"],
+                                    "description" : ["You see a small shit button"]
+                                }
+                            },
+                            "opened": [" The lid opens with a pop noise."]
+                        }
+                    },
                     "tool rack": {                        
                         "description" : ["You see a a tool rack on the wall."],
                         "inventory": {
@@ -165,7 +96,8 @@ locations["stairs"] = {
                     "attributes": ["room"],
                     "description" : ["It looks like a utility room"]
                 }
-            }
+            },
+            "opened": ["The door squeaks open."]
         }     
     }
 }
@@ -216,7 +148,8 @@ locations["utility room"] = {
                         }
                     }
                 }
-            }
+            },
+            "opened": ["The clicks open."]
         },
         "door 1": {
             "attributes": ["openable", "door", "locked"],
@@ -228,7 +161,8 @@ locations["utility room"] = {
                     "attributes": ["room"],
                     "description" : ["It looks like an office"]                        
                 }
-            }
+            },
+            "opened": ["The door squeaks open."]
         },
         "door 2": {
             "attributes": ["openable", "door"],
@@ -238,7 +172,9 @@ locations["utility room"] = {
                     "attributes": ["room"],
                     "description" : ["It looks like a hall"]
                 }
-            }
+            },
+            "opened": ["The door squeaks open."]
+            ## todo - on opened from hall - "event" also open here 
         }
     }
 }
@@ -278,7 +214,8 @@ locations["office"] = {
                             "attributes": ["takeable"],
                             "description" : ["You see a battery"]
                         }
-                    }
+                    },
+                    "opened" : ["You hear the the sound of friction."]
                 },
                 "draw 2": {
                     "attributes": ["container", "openable"],
@@ -301,7 +238,8 @@ locations["office"] = {
                                 }
                             }
                         },
-                    }                    
+                    },
+                    "opened" : ["You hear a squeak as it opens."]              
                 }
             }
         }, 
@@ -344,7 +282,8 @@ player = {
                         "Hint: Criminals have been known to open doors with bank cards"
                     ],
                 }
-            }        
+            },
+            "opened" : ["You see some dust fall to the floor - you dont open this often."]       
         }
     }
 }
