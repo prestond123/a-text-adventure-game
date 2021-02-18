@@ -129,6 +129,7 @@ locations["utility room"] = {
             "description" : ["You an open box of soap powder."],
         },
         "sink": {            
+            "attributes": ["container"],
             "description" : ["You see an old ceramic sink, with some taps."],
             "inventory":
             {

@@ -1,6 +1,6 @@
 import utils
 import colour
-from command_handler import *
+from command_handlers.command_handler import *
 
 class NavigationHandler(CommandHandler):
     def __init__(self):

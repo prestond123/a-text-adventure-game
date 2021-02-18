@@ -1,10 +1,10 @@
 from registry import *
-from examine_handler import *
-from open_handler import *
-from take_handler import *
-from drop_handler import *
-from navigation_handler import *
-from switch_handler import *
+from command_handlers.examine_handler import *
+from command_handlers.open_handler import *
+from command_handlers.take_handler import *
+from command_handlers.drop_handler import *
+from command_handlers.navigation_handler import *
+from command_handlers.switch_handler import *
 
 class RegistryBuilder():    
     def __init__(self, registry):

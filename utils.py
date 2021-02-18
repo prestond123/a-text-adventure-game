@@ -52,7 +52,9 @@ def get_inventory_display(items):
                 visible.append("'{}'".format(colour.red(item_name)))            
             elif(has_attribute(config, "switchable")):
                 visible.append("'{}'".format(colour.cyan(item_name)))
-            elif(has_attribute(config, "takeable")):
+            # elif(has_attribute(config, "takeable")):
+            #     visible.append("'{}'".format(colour.cyan(item_name)))
+            elif(has_attribute(config, "container")):
                 visible.append("'{}'".format(colour.cyan(item_name)))
             elif(has_attribute(config, "openable")):
                 visible.append("'{}'".format(colour.cyan(item_name)))
