@@ -22,9 +22,9 @@ class Game():
         self.locations = Locations(self, config["locations"])
         RegistryBuilder(self._registry).register_commands()
                           
-    def _handle_completed(self):        
-        if(self.player.has_inventory_item(self._config["completed-inventory-item"])):
-            self.completed = True        
+    def _handle_completed(self):                
+        if(self.player.get_location_name() == self._config["completed-location"]):
+            self._completed = True        
             utils.print_messages(self._config["completed-messages"])
             
     def _handle_quitting(self):
@@ -88,10 +88,15 @@ class Game():
             #self._set_completed() # temp
     
     def debug(self, what):
+        if(what == "colours on"):
+            colour.colours = True
+        if(what == "colours off"):
+            colour.colours = False
         if(what == "auto examine on"):
             self._auto_examine = True
         if(what == "auto examine off"):
             self._auto_examine = False
+
         if(what == "game"):
             print("game", self.get_config())        
         if(what == "player"):

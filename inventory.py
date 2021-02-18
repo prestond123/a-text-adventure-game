@@ -1,12 +1,13 @@
 import utils
-from describable import *
-from openable import *
-from takeable import *
-from dropable import *
-from unlockable import *
-from revealable import *
-from damageable import *
-from switchable import *
+from actions.describable import *
+from actions.openable import *
+from actions.takeable import *
+from actions.dropable import *
+from actions.unlockable import *
+from actions.revealable import *
+from actions.damageable import *
+from actions.switchable import *
+from actions.moveable import *
 
 class Inventory():
     def __init__(self, game, inventory):        
@@ -77,7 +78,7 @@ class Inventory():
 
 class InventoryItem(
     Inventory, Damageable, Revealable, Takeable, Dropable, 
-    Openable, Describable, Unlockable, Switchable):
+    Openable, Describable, Unlockable, Switchable, Moveable):
     def __init__(self, inventory, name, config):
         Inventory.__init__(self, inventory.game, Inventory.from_config(config))  
         self.name = name

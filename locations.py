@@ -1,5 +1,5 @@
-from describable import *
-from revealable import *
+from actions.describable import *
+from actions.revealable import *
 from inventory import *
 from events import *
 

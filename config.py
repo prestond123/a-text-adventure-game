@@ -166,7 +166,21 @@ locations["utility room"] = {
             },
             "opened": ["The clicks open."]
         },
-        "door 1": {
+         "door 1": {
+            "attributes": ["openable", "door", "locked"],
+            "description" : ["You see a solid wooden door."],
+            "unlock": "opens from else where",
+            "unlock-method" : "key",
+            "inside": {
+                "hall": {
+                    "attributes": ["room"],
+                    "description" : ["It looks like a hall"]
+                }
+            },
+            "opened": ["The door squeaks open."]
+            ## todo - on opened from hall - "event" also open here 
+        },
+        "door 2": {
             "attributes": ["openable", "door", "locked"],
             "description" : ["You see a door."],            
             "unlock": "office key",
@@ -179,18 +193,22 @@ locations["utility room"] = {
             },
             "opened": ["The door squeaks open."]
         },
-        "door 2": {
-            "attributes": ["openable", "door"],
-            "description" : ["You see a solid wooden door."],
+        "door 3": {
+            "attributes": ["openable", "door", "locked"],
+            "description" : [
+                "You see a heavy door", 
+                "The door has a small window",
+                "Looking throught the window, it looks like the leads outside."],            
+            "unlock": "backdoor key",
+            "unlock-method" : "key",
             "inside": {
-                "hall": {
+                "exit": {
                     "attributes": ["room"],
-                    "description" : ["It looks like a hall"]
+                    "description" : ["It looks like you are free"]
                 }
             },
             "opened": ["The door squeaks open."]
-            ## todo - on opened from hall - "event" also open here 
-        }
+        } 
     }
 }
 
@@ -200,7 +218,8 @@ locations["office"] = {
         "picture": {
             "attributes": ["container", "moveable"],
             "description" : ["You see a painted picture of a man with a dog."],
-            "inventory": {
+            "moved": ["You move the picture to the side"],
+            "inside": {
                 "safe": {
                     "attributes": ["safe"],
                     "description" : [
@@ -210,7 +229,7 @@ locations["office"] = {
                     ],
                     "combination": combination1,
                     "inside": {
-                        "back door key": {
+                        "backdoor key": {
                             "attributes": ["takeable"],
                             "description" : ["You see a large iron key."]
                         }
@@ -265,7 +284,9 @@ locations["office"] = {
         }
     }
 }
-
+locations["exit"] = {
+    "description": ["You have escaped."]
+}
 player = {    
     "location-name": "basement",
     #"location-name": "utility room",
@@ -305,9 +326,8 @@ player = {
     }
 }
 game = {
-    "prompt": "What would you like to do? ",
-    "completed-inventory-item": "talisman",     ## todo
-    "completed-location": "exit",               ## todo
+    "prompt": "What would you like to do? ",    
+    "completed-location": "exit",
     "completed-messages": ["Well done!", "You completed the game."],
     "quitting-messages": ["You quit the game.", "Come back soon!"],
     "max-carry": 8

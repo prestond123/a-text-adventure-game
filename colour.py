@@ -10,17 +10,29 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+colours=True
+
 def red(text):    
-    return "{}{}{}".format(bcolors.RED, text, bcolors.ENDC)
+    if(colours):
+        return "{}{}{}".format(bcolors.RED, text, bcolors.ENDC)
+    return text
 
 def green(text):
-    return "{}{}{}".format(bcolors.GREEN, text, bcolors.ENDC)
+    if(colours):
+        return "{}{}{}".format(bcolors.GREEN, text, bcolors.ENDC)
+    return text
 
 def yellow(text):
-    return "{}{}{}".format(bcolors.YELLOW, text, bcolors.ENDC)
+    if(colours):
+        return "{}{}{}".format(bcolors.YELLOW, text, bcolors.ENDC)
+    return text
 
 def blue(text):
-    return "{}{}{}".format(bcolors.BLUE, text, bcolors.ENDC)
+    if(colours):
+        return "{}{}{}".format(bcolors.BLUE, text, bcolors.ENDC)
+    return text
 
 def cyan(text):
-    return "{}{}{}".format(bcolors.CYAN, text, bcolors.ENDC)
+    if(colours):
+        return "{}{}{}".format(bcolors.CYAN, text, bcolors.ENDC)
+    return text

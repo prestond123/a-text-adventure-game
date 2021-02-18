@@ -11,7 +11,7 @@ class OpenHandler(CommandHandler):
             if(context.has_inventory_item(item_name)):
                 return context
         return None
-
+     
     def safe(self, game, combination):
         location = game.get_location()
 
@@ -70,6 +70,20 @@ class OpenHandler(CommandHandler):
                 ))
         else:
             utils.print_message("I dont understand - Try: unlock <item> with <item>")
+
+    def move(self, game, item_name):
+        location = game.get_location()
+        if(item_name):   
+            context = self._get_context(item_name, [location, game.player])
+            if(context):
+                item = context.get_inventory_item(item_name)                                
+                item.move(context)                
+            else:
+                utils.print_message("I cant see a '{}' - Try open <item>".format(
+                    colour.red(item_name)
+                ))
+        else:            
+            utils.print_message("I dont know what to move - Try open <item>")            
 
     def open(self, game, item_name):        
         location = game.get_location()
