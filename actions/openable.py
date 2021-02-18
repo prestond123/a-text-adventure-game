@@ -6,6 +6,11 @@ class Openable:
     
     def open(self, context):               
         if(utils.has_attribute(self._config, "openable")):            
+            if(utils.has_attribute(self._config, "locked")):
+                utils.print_message("Item '{}' is locked.".format(                                
+                    colour.red(self.name)
+                ))
+                return
             if("inside" in self._config):
                 items = self._config.pop("inside", None)
                 items = self._config["revealed"] = items
@@ -13,11 +18,6 @@ class Openable:
                 self.add_inventory_items(items)                
                 if(len(items) > 0):
                     #if(utils.has_attribute(self._config, "door")):                        
-                        if(utils.has_attribute(self._config, "locked")):
-                            utils.print_message("Item '{}' is locked.".format(                                
-                                colour.red(self.name)
-                            ))
-                            return
                         if("opened" in self._config):
                             utils.print_messages(self._config["opened"])
                         ## remove doors after open
@@ -33,14 +33,7 @@ class Openable:
                             utils.print_message("You see the '{}' in the '{}'".format(
                                 colour.green(item_name), 
                                 colour.green(self.name)
-                            ))
-                    # else:
-                    #     if("opened" in self._config):
-                    #         utils.print_messages(self._config["opened"])
-                    #     utils.print_message("You see a '{}' inside the '{}'".format(
-                    #         colour.green(item_name), 
-                    #         colour.green(self.name)
-                    #     ))
+                            ))                    
                 if(self.has_inventory()):
                     context.add_inventory_items(self.get_inventory_items())
         else:                        

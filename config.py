@@ -52,7 +52,7 @@ locations["basement"] = {
                             "inside": {
                                 "shirt button": {
                                     "attributes": ["takeable"],
-                                    "description" : ["You see a small shit button"]
+                                    "description" : ["You see a small shitt button"]
                                 }
                             },
                             "opened": [" The lid opens with a pop noise."]
@@ -110,9 +110,9 @@ locations["stairs"] = {
 locations["utility room"] = {
     "attributes": ["room"],
     "description": [
-        "You seem to be in a room used for washing stuff, ",
-        "there are some white goods, and a sink, and towel",
-        "There are a few doors gong off this room"
+        "You seem to be in a room used for washing stuff.",
+        "There are some white goods, a sink, and towel.",
+        "There are a few doors going off this room"
     ],
     "reveal": {
         "basement light switch": {
@@ -126,7 +126,10 @@ locations["utility room"] = {
         },
         "box of soap powder": {            
             "attributes": ["takeable"],
-            "description" : ["You an open box of soap powder."],
+            "description" : [
+                "You see a open box of soap powder.",
+                "You smell it and it smells floral."
+            ],
         },
         "sink": {            
             "attributes": ["container"],
@@ -147,7 +150,7 @@ locations["utility room"] = {
         },
         "tea towel": {      
             "attributes": ["takeable"],      
-            "description" : ["You see an dirty tea towel."]
+            "description" : ["You see a dirty tea towel."]
         },
         "cupboard": {    
             "attributes": ["container", "openable"],        
@@ -164,7 +167,7 @@ locations["utility room"] = {
                     }
                 }
             },
-            "opened": ["The clicks open."]
+            "opened": ["The cupboard clicks open."]
         },
          "door 1": {
             "attributes": ["openable", "door", "locked"],
@@ -290,6 +293,7 @@ locations["exit"] = {
 player = {    
     "location-name": "basement",
     #"location-name": "utility room",
+    #"location-name": "office",
     "inventory": {        
         "badge": {
             "attributes": ["takeable", "damageable"],
