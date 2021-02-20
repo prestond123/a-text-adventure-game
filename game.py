@@ -75,10 +75,13 @@ class Game():
             carrying_display = utils.get_inventory_display(carrying)
             collections = utils.get_item_collections(self.get_location().get_inventory_items())
             visible = utils.get_inventory_display(collections["other"])
-            print("+ visible:[{}]".format(visible))
+            if(len(visible) > 0):
+                print("+ visible: [\n  {}\n]".format(visible))
+            else:
+                print("+ visible: [ ]")
             routes = utils.get_inventory_display(collections["routes"])
             print(
-                "+ location:['{}']".format(colour.yellow(self.player.get_location_name())), 
+                "+ location: ['{}']".format(colour.yellow(self.player.get_location_name())), 
                 ": routes: [{}]".format(routes))
             print("+ carrying: [{}]({}/{})".format(
                 carrying_display, 

@@ -41,12 +41,13 @@ def build_index(container):
     return index
 
 def get_inventory_display(items):
-        visible = []        
-        for item_name in items:
+        visible = []      
+       
+        for item_name in sorted(items):            
             item = items[item_name]    
             config = item
             if(not type(item) == dict):
-                config = item.get_config()
+                config = item.get_config()            
             if(has_attribute(config, "room")):
                 visible.append("'{}'".format(colour.yellow(item_name)))
             elif(has_attribute(config, "locked")):                
@@ -62,11 +63,25 @@ def get_inventory_display(items):
             else:
                 visible.append("'{}'".format(colour.green(item_name)))
                 #visible.append("'{}'".format(item_name))
-        return ", ".join(visible)   
+        formatted = []  
+        part =[]
+        max_per_line = 5  
+        count = 1 
+        for display in visible:
+            if(count % max_per_line == 0):                
+                part.append(display)
+                formatted.append(", ".join(part))
+                part=[]
+            else:
+                part.append(display)
+            count += 1
+        formatted.append(", ".join(part))
+        
+        return "\n  ".join(formatted)           
 
 def get_item_collections(items):
     collections = { "routes": {}, "other": {} }
-    for item_name in items:
+    for item_name in sorted(items):
         item = items[item_name]    
         config = item
         if(not type(item) == dict):
