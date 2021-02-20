@@ -63,3 +63,16 @@ def get_inventory_display(items):
                 visible.append("'{}'".format(colour.green(item_name)))
                 #visible.append("'{}'".format(item_name))
         return ", ".join(visible)   
+
+def get_item_collections(items):
+    collections = { "routes": {}, "other": {} }
+    for item_name in items:
+        item = items[item_name]    
+        config = item
+        if(not type(item) == dict):
+            config = item.get_config()
+        if(has_attribute(config, "room")):
+            collections["routes"][item_name] = item            
+        else:
+            collections["other"][item_name] = item            
+    return collections

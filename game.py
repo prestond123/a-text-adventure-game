@@ -66,21 +66,25 @@ class Game():
                         if(i in item_names):                            
                             count -= 1                
         self.carrying_count = count
-        return count
-         
+        return count    
+
     def run(self):
         self.auto_examine()
         while(not (self._completed or self._quit)):
             carrying = self.player.get_inventory_items()
             carrying_display = utils.get_inventory_display(carrying)
-            visible = utils.get_inventory_display(self.get_location().get_inventory_items())
+            collections = utils.get_item_collections(self.get_location().get_inventory_items())
+            visible = utils.get_inventory_display(collections["other"])
             print("+ visible:[{}]".format(visible))
+            routes = utils.get_inventory_display(collections["routes"])
+            print(
+                "+ location:['{}']".format(colour.yellow(self.player.get_location_name())), 
+                ": routes: [{}]".format(routes))
             print("+ carrying: [{}]({}/{})".format(
                 carrying_display, 
                 self.set_carrying_count(carrying),
                 self.max_carry)
             )
-            print("+ location:['{}']".format(colour.yellow(self.player.get_location_name())))
             self._input_handler.handle_input()
             #self._player.add_inventory_items([self._config["completed-inventory-item"]]) ## - test completed
             self._handle_completed()
