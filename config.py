@@ -20,7 +20,18 @@ locations["basement"] = {
         "light": {
             "on": {
                 "description": ["You are in a dimly lit basement."],
-                "reveal": {     
+                "reveal": {    
+                    "rug": {
+                        "attributes": ["container", "moveable"],
+                        "description" : ["You see a painted picture of a landscape."],
+                        "moved": ["You move the picture to the side"],
+                        "inside": {
+                            "green key": {                    
+                                "attributes": ["takeable"],                    
+                                "description": ["You see a green key."]
+                            }
+                        }
+                    },  
                     "cupboard": {    
                         "attributes": ["container", "openable"],        
                         "description" : ["You see a cupboard mounted on the wall."],
@@ -32,6 +43,10 @@ locations["basement"] = {
                                     "draw 4 key": {
                                         "attributes": ["takeable"],
                                         "description": ["You see a key with a number 4 on it."]
+                                    },
+                                    "red key": {
+                                        "attributes": ["takeable"],
+                                        "description": ["You see a red key."]
                                     }
                                 }
                             }
@@ -45,9 +60,9 @@ locations["basement"] = {
                             "To open the safe use:",
                             "safe <nnnnnn>"
                         ],
-                        "combination": combination2,
+                        "combination": combination1,
                         "inside": {
-                            "paper": {
+                            "paper 2": {
                                 "attributes": ["takeable"],
                                 "description" : [
                                     "A piece of paper ripped down the right hand side.",
@@ -128,7 +143,7 @@ locations["basement"] = {
 
 locations["stairs"] = {
     "description": ["You are on the stairs."],    
-    "reveal": {    
+    "reveal": {           
         "picture": {
             "attributes": ["container", "moveable"],
             "description" : ["You see a painted picture of a landscape."],
@@ -200,10 +215,10 @@ locations["utility room"] = {
             },
             "opened": ["The door clicks open."]            
         },
-        "box of soap powder": {            
+        "soap powder": {            
             "attributes": ["takeable"],            
             "description" : [
-                "You see a open box of soap powder.",
+                "You see a open box of soap powder, for a washing machine.",
                 "You smell it and it smells floral."
             ],
         },
@@ -239,6 +254,10 @@ locations["utility room"] = {
                         "car key": {
                             "attributes": ["takeable"],
                             "description": ["You see a key with BMW printed on it."]
+                        },
+                        "blue key": {
+                            "attributes": ["takeable"],
+                            "description": ["You see a blue key."]
                         }
                     }
                 }
@@ -306,7 +325,7 @@ locations["office"] = {
                         "To open the safe use:",
                         "safe <nnnnnn>"
                     ],
-                    "combination": combination1,
+                    "combination": combination2,
                     "inside": {
                         "backdoor key": {
                             "attributes": ["takeable"],
@@ -338,7 +357,7 @@ locations["office"] = {
                     "unlock": "draw 2 key",
                     "unlock-method" : "key",
                     "inside": {
-                        "paper": {
+                        "paper 1": {
                             "attributes": ["takeable"],
                             "description" : [
                                 "A piece of paper ripped down the left hand side.",
@@ -378,10 +397,10 @@ locations["office"] = {
                     "unlock": "draw 4 key",
                     "unlock-method" : "key",
                     "inside": {
-                        "paper": {
+                        "paper 3": {
                             "attributes": ["takeable"],
                             "description" : [
-                                "A piece of paper ripped down the left hand side.",
+                                "A piece of paper.",
                                 "The paper has the number: "+ combination2
                             ]                                
                         }
@@ -442,7 +461,7 @@ game = {
     "completed-location": "exit",
     "completed-messages": ["Well done!", "You completed the game."],
     "quitting-messages": ["You quit the game.", "Come back soon!"],
-    "max-carry": 5
+    "max-carry": 3
 }
 config = {
     "game": game,

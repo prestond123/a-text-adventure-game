@@ -13,7 +13,7 @@ class Openable:
                 return
             if("inside" in self._config):
                 items = self._config.pop("inside", None)
-                items = self._config["revealed"] = items
+                self._config["revealed"] = items
                 item_name = sorted(items)[0] # only allow 1 item - inside stuff                
                 self.add_inventory_items(items)                
                 if(len(items) > 0):
