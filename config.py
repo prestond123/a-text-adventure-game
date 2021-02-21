@@ -442,7 +442,10 @@ locations["shed patio"] = {
             "description" : ["You see a shed"]
         },
         "shed door": {
-            "attributes": ["openable", "door", "locked"],
+            "attributes": [
+                "openable", "door"
+                #, "locked"
+            ],
             "description" : [
                 "You see a wooden door", 
                 "The door has a small window",
@@ -473,7 +476,10 @@ locations["garage entrance"] = {
             "description" : ["You see a shed"]
         },
         "garage door": {            
-            "attributes": ["openable", "door", "locked"],
+            "attributes": [
+                "openable", "door"
+                #, "locked"
+            ],
             "description" : [
                 "You see a heavy door", 
                 "The door has a small window",
@@ -500,7 +506,7 @@ locations["garage"] = {
 
 locations["shed"] = {    
     "attributes": ["room"],
-    "description": ["You are in the garage."],
+    "description": ["You are in the shed."],
     "reveal": {                            
     }
 }
@@ -537,7 +543,7 @@ locations["main drive"] = {
 
 locations["gate house"] = {    
     "attributes": ["room"],
-    "description": ["You are in the garden in the gateway."],
+    "description": ["You are at the gate house."],
     "reveal": {                            
         "main gate": {
             "attributes": ["openable", "door", "locked"],
@@ -563,10 +569,10 @@ locations["exit"] = {
     "description": ["You have escaped."]
 }
 player = {    
-    #"location-name": "basement",
+    "location-name": "basement",
     #"location-name": "utility room",
     #"location-name": "office",
-    "location-name": "rear porch",
+    #"location-name": "rear porch",
     
     "inventory": {        
         "badge": {
