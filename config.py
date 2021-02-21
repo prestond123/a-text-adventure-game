@@ -481,9 +481,8 @@ locations["garage entrance"] = {
                 #, "locked"
             ],
             "description" : [
-                "You see a heavy door", 
-                "The door has a small window",
-                "Looking through the window, it looks like the leads outside."],            
+                "You see a heavy door",                                 
+            ],            
             "unlock": "garage key",
             "unlock-method" : "key",
             "inside": {
@@ -500,7 +499,28 @@ locations["garage entrance"] = {
 locations["garage"] = {    
     "attributes": ["room"],
     "description": ["You are in the garage."],
-    "reveal": {                            
+    "reveal": {      
+        "cupboard": {    
+            "attributes": ["container", "openable"],        
+            "description" : ["You see a cupboard mounted on the wall."],
+            "inside": {
+                "key hook rack": {
+                    "attributes": ["container"],
+                    "description": ["You see a key hook rack."],
+                    "inventory": {
+                        "shed key": {
+                            "attributes": ["takeable"],
+                            "description": ["You see a key with shed printed on it."]
+                        },
+                        "hall key": {
+                            "attributes": ["takeable"],
+                            "description": ["You see a key with hall printed on it."]
+                        }
+                    }
+                }
+            },
+            "opened": ["The cupboard clicks open."]
+        }                      
     }
 }
 
@@ -536,7 +556,7 @@ locations["main drive"] = {
     "reveal": {                            
         "gate house": {
             "attributes": ["room"],
-            "description" : ["You see a gate"]
+            "description" : ["You see a gate house next to a large metal gate"]
         }        
     }
 }
@@ -544,7 +564,24 @@ locations["main drive"] = {
 locations["gate house"] = {    
     "attributes": ["room"],
     "description": ["You are at the gate house."],
-    "reveal": {                            
+    "reveal": {   
+        "cupboard": {    
+            "attributes": ["container", "openable"],        
+            "description" : ["You see a cupboard mounted on the wall."],
+            "inside": {
+                "key hook rack": {
+                    "attributes": ["container"],
+                    "description": ["You see a key hook rack."],
+                    "inventory": {
+                        "garage key": {
+                            "attributes": ["takeable"],
+                            "description": ["You see a key with garage written on it."]
+                        }                        
+                    }
+                }
+            },
+            "opened": ["The cupboard clicks open."]
+        },                         
         "main gate": {
             "attributes": ["openable", "door", "locked"],
             "description" : [
@@ -558,16 +595,14 @@ locations["gate house"] = {
             "inside": {
                 "exit": {
                     "attributes": ["room"],
-                    "description" : ["It looks like a garageway out."]
+                    "description" : ["It looks like a a way out."]
                 }
             },
             "opened": ["The door opens with a grinding sqeak."]
         }        
     }
 }
-locations["exit"] = {
-    "description": ["You have escaped."]
-}
+
 player = {    
     "location-name": "basement",
     #"location-name": "utility room",
