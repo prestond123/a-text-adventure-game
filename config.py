@@ -414,13 +414,160 @@ locations["office"] = {
         }
     }
 }
+locations["rear porch"] = {    
+    "attributes": ["room"],
+    "description": ["You are looking out to a garden."],
+    "reveal": {                                  
+        "front porch": {
+            "attributes": ["room"],
+            "description" : ["You see a shed"]
+        },
+        "shed patio": {
+            "attributes": ["room"],
+            "description" : ["You see a shed"]
+        },
+        "garage entrance": {
+            "attributes": ["room"],
+            "description" : ["You see a garage"]
+        }
+    },
+}
+
+locations["shed patio"] = {    
+    "attributes": ["room"],
+    "description": ["You are in the garden next to a shed."],
+    "reveal": {                            
+        "rear porch": {
+            "attributes": ["room"],
+            "description" : ["You see a shed"]
+        },
+        "shed door": {
+            "attributes": ["openable", "door", "locked"],
+            "description" : [
+                "You see a wooden door", 
+                "The door has a small window",
+                "Looking through the window, it looks like there is some items inside."],            
+            "unlock": "shed key",
+            "unlock-method" : "key",
+            "inside": {
+                "shed": {
+                    "attributes": ["room"],
+                    "description" : ["It looks like a shed"]
+                }
+            },
+            "opened": ["The door squeaks open."]
+        },        
+    }
+}
+
+locations["garage entrance"] = {    
+    "attributes": ["room"],
+    "description": ["You are in the garden next to a garage."],
+    "reveal": {                            
+        "rear porch": {
+            "attributes": ["room"],
+            "description" : ["You see a shed"]
+        },
+        "front porch": {
+            "attributes": ["room"],
+            "description" : ["You see a shed"]
+        },
+        "garage door": {            
+            "attributes": ["openable", "door", "locked"],
+            "description" : [
+                "You see a heavy door", 
+                "The door has a small window",
+                "Looking through the window, it looks like the leads outside."],            
+            "unlock": "garage key",
+            "unlock-method" : "key",
+            "inside": {
+                "garage": {
+                    "attributes": ["room"],
+                    "description" : ["It looks like a garage"]
+                }
+            },
+            "opened": ["The door squeaks open."]
+        }     
+    }
+}
+
+locations["garage"] = {    
+    "attributes": ["room"],
+    "description": ["You are in the garage."],
+    "reveal": {                            
+    }
+}
+
+locations["shed"] = {    
+    "attributes": ["room"],
+    "description": ["You are in the garage."],
+    "reveal": {                            
+    }
+}
+
+locations["front porch"] = {    
+    "attributes": ["room"],
+    "description": ["You are in the front porch."],
+    "reveal": {                            
+        "rear porch": {
+            "attributes": ["room"],
+            "description" : ["You see a porch"]
+        },
+        "garage entrance": {
+            "attributes": ["room"],
+            "description" : ["You see a garage"]
+        },        
+        "main drive": {
+            "attributes": ["room"],
+            "description" : ["You see a gravelled drive"]
+        }
+    }
+}
+
+locations["main drive"] = {    
+    "attributes": ["room"],
+    "description": ["You are on the main drive ay of the house."],
+    "reveal": {                            
+        "gate house": {
+            "attributes": ["room"],
+            "description" : ["You see a gate"]
+        }        
+    }
+}
+
+locations["gate house"] = {    
+    "attributes": ["room"],
+    "description": ["You are in the garden in the gateway."],
+    "reveal": {                            
+        "main gate": {
+            "attributes": ["openable", "door", "locked"],
+            "description" : [
+                "You see a high heavy metal gate with spikes on top",                 
+                "Looking through the gate, you see the outside world.",
+                "You appear to be in the middle of the countryside - ",
+                "there is nothing but hills and trees outside, with",
+                "a dirt track leading away..."],            
+            "unlock": "garage key",
+            "unlock-method" : "key",
+            "inside": {
+                "exit": {
+                    "attributes": ["room"],
+                    "description" : ["It looks like a garageway out."]
+                }
+            },
+            "opened": ["The door opens with a grinding sqeak."]
+        }        
+    }
+}
 locations["exit"] = {
     "description": ["You have escaped."]
 }
 player = {    
-    "location-name": "basement",
+    #"location-name": "basement",
     #"location-name": "utility room",
     #"location-name": "office",
+    "location-name": "rear porch",
+    
     "inventory": {        
         "badge": {
             "attributes": ["takeable", "damageable"],
